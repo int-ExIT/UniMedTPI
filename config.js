@@ -1,9 +1,7 @@
 require(`dotenv`).config();
 
-const config = {
+module.exports = {
   app : {
     port : process.env.PORT,
   },
 }
-
-module.exports = config;
