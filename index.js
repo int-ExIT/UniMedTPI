@@ -1,5 +1,6 @@
 require(`dotenv`).config();
 const server = require(`./app`);
+// const bdd = require(`./models/index`);
 
 const PORT = server.get(`port`);
 
