@@ -1,5 +1,5 @@
+const sequelize = require(`../config/bdd`);
 const { DataTypes } = require(`sequelize`);
-const sequelize = require(`../bdd`);
 
 // ---------------------------------------------- IMPORT MODELS ---
 const User = require(`./user.model`);

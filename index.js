@@ -1,5 +1,5 @@
 require(`dotenv`).config();
-const server = require(`./app`);
+const server = require(`./routers/index.router`);
 // const bdd = require(`./models/index`);
 
 const PORT = server.get(`port`);
