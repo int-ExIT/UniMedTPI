@@ -64,16 +64,29 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: `CASCADE`,
       onUpdate: `CASCADE`,
     });
-    
+
+    User.hasOne(models.Specialty, {
+      foreignKey: `user_id`,
+      as: `specialty`,
+      onDelete: `CASCADE`,
+      onUpdate: `CASCADE`,
+    });
+
     /**
      * Para relaciones de muchos a muchos usar '.belongsToMany()' en ambos modelos a relacionar
      * 
      * No es necesario agregar ningun associate en la tabla intermediaria ('through:')
-     */
+    */
     User.belongsToMany(models.Patient, {
       through: models.Admission,
       foreignKey: `user_id`,
       as: `admission`,
+    });
+
+    User.belongsToMany(models.Patient, {
+      through: models.Study,
+      foreignKey: `user_id`,
+      as: `study`,
     });
   };
 

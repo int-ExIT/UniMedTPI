@@ -35,5 +35,14 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
+  Admission.associate = models => {
+    Admission.belongsTo(models.Bed, {
+      foreignKey: `bed_id`,
+      as: `bed`,
+      onDelete: `CASCADE`,
+      onUpdate: `CASCADE`,
+    });
+  };
+
   return Admission;
 };

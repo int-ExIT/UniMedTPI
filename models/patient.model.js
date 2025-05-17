@@ -68,10 +68,23 @@ module.exports = (sequelize, DataTypes) => {
 
   // --------------------------------------- DEFINE ASSOCIATION ---
   Patient.associate = models => {
+    Patient.hasOne(models.Medical_History, {
+      foreignKey: `patient_id`,
+      as: `medical history`,
+      onDelete: `CASCADE`,
+      onUpdate: `CASCADE`,
+    });
+
     Patient.belongsToMany(models.User, {
       through: models.Admission,
       foreignKey: `patient_id`,
       as: `admission`
+    });
+  
+    Patient.belongsToMany(models.User, {
+      through: models.Study,
+      foreignKey: `patient_id`,
+      as: `study`,
     });
   };
 
