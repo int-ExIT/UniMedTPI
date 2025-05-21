@@ -1,0 +1,52 @@
+.formPatient 
+  h1 Registrar Paciente
+  form()
+    .register
+      //- Nombre
+      .input 
+        label(for="nombres") Nombre 
+        input(type="text" id="nombres" name="nombres" autocomplete="off" spellcheck="false" value="Ignacio")
+      //- Apellido
+      .input 
+        label(for="apellidos") Apellido 
+        input(type="text" id="apellidos" name="apellidos" autocomplete="off" spellcheck="false" value="Torres")
+      //- DNI
+      .input 
+        label(for="dni") DNI 
+        input(type="text" id="dni" name="dni" autocomplete="off" spellcheck="false" value="41682078")
+      //- Numero de Cel
+      .input 
+        label(for="numero_cel") Numero de Celular 
+        input(type="text" id="numero_cel" name="numero_cel" autocomplete="off" spellcheck="false" value="2664319218")
+      //- eMail
+      .input 
+        label(for="email") Email 
+        input(type="text" id="email" name="email" autocomplete="off" spellcheck="false" value="eittien@gmail.com")
+      //- Direccion
+      .input 
+        label(for="direccion") Direccion 
+        input(type="text" id="direccion" name="direccion" autocomplete="off" spellcheck="false" value="Vicente dupuy")
+    .register 
+      //- Estado Civil
+      .input 
+        label(for="estado_civil") Estado Civil 
+        input(type="text" id="estado_civil" name="estado_civil" autocomplete="off" spellcheck="false" value="Soltero")
+      //- Sexo
+      .input 
+        label(for="sexo") Sexo 
+        input(type="text" id="sexo" name="sexo" autocomplete="off" spellcheck="false" value="Hombre")
+      //- Edad
+      .input 
+        label(for="edad") Edad 
+        input(type="text" id="edad" name="edad" autocomplete="off" spellcheck="false" value="26")
+      //- Fecha de Nacimiento
+      .input 
+        label(for="fecha_nacimiento") Fecha de Nacimiento 
+        input(type="text" id="fecha_nacimiento" name="fecha_nacimiento" autocomplete="off" spellcheck="false" value="1999-02-05")
+      //- Contacto Particular
+      .input 
+        label(for="contacto_particular") Contacto Particular 
+        input(type="text" id="contacto_particular" name="contacto_particular" autocomplete="off" spellcheck="false" value="2664006699")
+      //- Boton Enviar
+      .input
+        input(type="submit" id="register" value="Registrar")  

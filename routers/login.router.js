@@ -1,9 +1,10 @@
 const router = require(`express`).Router();
 
 router.get(`/`, (req, res) => {
-  res.render(`index`, {
-    title:"UniMed", 
-    script:"../public/scripts/verify.js"
+  res.status(200).render(`index`, {
+    title: "UniMed",
+    script: "../public/scripts/verify.js",
+    styles: "../public/styles/login.css",
   });
 });
 

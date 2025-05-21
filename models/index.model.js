@@ -2,25 +2,25 @@ const sequelize = require(`../config/bdd`);
 const { DataTypes } = require(`sequelize`);
 
 // ---------------------------------------------- IMPORT MODELS ---
-const Bed = require(`./bed.model`);
-const User = require(`./user.model`);
-const Study = require(`./study.model`);
-const Login = require(`./login.model`);
-const Patient = require(`./patient.model`);
-const Admission = require(`./admission.model`);
-const Specialty = require(`./specialty.model`);
-const Medical_History = require(`./medicalHistory.model`);
+const Bed = require(`./bed.model`)(sequelize, DataTypes);
+const User = require(`./user.model`)(sequelize, DataTypes);
+const Study = require(`./study.model`)(sequelize, DataTypes);
+const Login = require(`./login.model`)(sequelize, DataTypes);
+const Patient = require(`./patient.model`)(sequelize, DataTypes);
+const Admission = require(`./admission.model`)(sequelize, DataTypes);
+const Specialty = require(`./specialty.model`)(sequelize, DataTypes);
+const Medical_History = require(`./medicalHistory.model`)(sequelize, DataTypes);
 
 // ----------------------------------------------- CARGA MODELS ---
 const models = {
-  Bed: Bed(sequelize, DataTypes),
-  User: User(sequelize, DataTypes),
-  Study: Study(sequelize, DataTypes),
-  Login: Login(sequelize, DataTypes),
-  Patient: Patient(sequelize, DataTypes),
-  Admission: Admission(sequelize, DataTypes),
-  Specialty: Specialty(sequelize, DataTypes),
-  Medical_History: Medical_History(sequelize, DataTypes),
+  Bed: Bed,
+  User: User,
+  Study: Study,
+  Login: Login,
+  Patient: Patient,
+  Admission: Admission,
+  Specialty: Specialty,
+  Medical_History: Medical_History,
 };
 
 // ------------------------------------------- ASSOCIATE MODELS ---
@@ -39,4 +39,6 @@ async function loadTables(force) {
   }
 }
 
-module.exports = loadTables;
+module.exports = {
+  Patient,
+};

@@ -1,0 +1,18 @@
+.patientSearch 
+  form()
+    .register
+      //- DNI
+      .input 
+        label(for="searchPatiente") Ingrese un Paciente 
+        input(
+          type="text" id="searchPatiente" 
+          name="searchPatiente" 
+          autocomplete="off" 
+          spellcheck="false" 
+          value="" 
+          placeholder="Buscar"
+        )
+      //- Boton Enviar
+      .input
+        input(type="submit" id="register" value="Buscar")  
+      

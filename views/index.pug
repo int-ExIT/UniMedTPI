@@ -2,9 +2,6 @@ extends layout
 
 block nav 
   nav.navbar
-    a(href="http://www.google.com") Inicio
-    a(href="http://www.google.com") Perfil
-    a(href="http://www.google.com") Otros
   .logo 
     img(src="../public/images/logo_unimed.png" alt="logo_unimed" width="50px" height="50px")
     h1 UniMed
@@ -16,14 +13,14 @@ block main
       .input
         label(for="user") Nombre de Usuario
         input(type="text" id="user" name="user" autocomplete="off" spellcheck="false" value="")
-        span(id="userHelp").ayuda Solo letras
+        span(id="userHelp").ayuda
       //- Contraseña
       .input
         label(for="pass") Contraseña
         input(type="password" id="pass" name="pass" value="")
         span Mostrar Contraseña  
           input(type="checkbox" name="" value="" id="look")
-        span(id="passHelp").ayuda Minimo 8 caracteres
+        span(id="passHelp").ayuda
       //- Boton Enviar
       .btn
         input(type="submit")
