@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    .content {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    form {
+      display: inherit;
+      flex-direction: column;
+      border: solid 1px;
+      padding: 10px;
+      gap: 2px;
+    }
+  </style>
+
   <title>Document</title>
 </head>
+
 <body>
-  <input type="checkbox" name="" id="" >
+  <div class="content">
+    <form action="http://localhost:8000/patient/one" name="DELETE">
+      <label for="nombre">Nombre </label>
+      <input type="text" name="nombre" id="nombre">
+
+      <label for="apellido">Apellido </label>
+      <input type="text" name="apellido" id="apellido">
+
+      <input type="submit" class="sendBtn" value="Enviar">
+    </form>
+    <form action="http://localhost:8000/patient/all" name="GET">
+      <label for="numero">Numero de Cel </label>
+      <input type="text" name="numero" id="numero">
+
+      <label for="direccion">Direccion </label>
+      <input type="text" name="direccion" id="direccion">
+
+      <input type="submit" class="sendBtn" value="Enviar">
+    </form>
+    <form action="http://localhost:8000/patient" name="POST">
+      <label for="edad">Edad </label>
+      <input type="text" name="edad" id="edad">
+
+      <label for="sexo">Sexo </label>
+      <input type="text" name="sexo" id="sexo">
+
+      <input type="submit" class="sendBtn" value="Enviar">
+    </form>
+  </div>
+  <div class="content">
+    <p id="console">Esta es la consola</p>
+  </div>
+
+  <script>
+    const $forms = Array.from(document.querySelectorAll("form"));
+    const $console = document.querySelector("#console");
+
+    for (const $form of $forms) {
+      $form.addEventListener("submit", evt => {
+
+        evt.preventDefault();
+
+        const action = $form.action;
+        const method = $form.name;
+        const formData = new FormData($form);
+        const body = Object.fromEntries(formData);
+
+        $console.innerHTML = action + " " + (method);
+      });
+    }
+  </script>
 </body>
+
 </html>

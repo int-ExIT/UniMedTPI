@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Specialty = sequelize.define(`Specialty`, {
+  const Specialty = sequelize.define("Specialty", {
     user_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -13,14 +13,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: false,
   });
-  
+
   // --------------------------------------- DEFINE ASSOCIATION ---
   Specialty.associate = models => {
     Specialty.belongsTo(models.User, {
-      foreignKey: `user_id`,
-      as: `user`,
-      onDelete: `CASCADE`,
-      onUpdate: `CASCADE`,
+      foreignKey: "user_id",
+      as: "user",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
   };
 

@@ -1,12 +1,12 @@
-const $form = document.querySelector(`form`);
-const $user = document.querySelector(`#user`);
-const $password = document.querySelector(`#pass`);
-const $userHelp = document.querySelector(`#userHelp`);
-const $passHelp = document.querySelector(`#passHelp`);
-const $error = document.querySelector(`.error`);
-const $look = document.querySelector(`#look`);
+const $form = document.querySelector("form");
+const $user = document.querySelector("#user");
+const $password = document.querySelector("#pass");
+const $userHelp = document.querySelector("#userHelp");
+const $passHelp = document.querySelector("#passHelp");
+const $error = document.querySelector(".error");
+const $look = document.querySelector("#look");
 
-$form.addEventListener(`submit`, event => {
+$form.addEventListener("submit", event => {
   event.preventDefault();
   
   let user = $user.value;
@@ -19,9 +19,9 @@ $form.addEventListener(`submit`, event => {
 });
 
 // Mostrar contrasenia
-$look.addEventListener(`click`, () => {
-  if ($password.type === `password`) $password.type = `text`;
-  else $password.type = `password`;
+$look.addEventListener("click", () => {
+  if ($password.type === "password") $password.type = "text";
+  else $password.type = "password";
 });
 
 function checkFields(user, password) {

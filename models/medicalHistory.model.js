@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Medical_History = sequelize.define(`Medical_History`, {
+  const Medical_History = sequelize.define("Medical_History", {
     patient_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -8,37 +8,37 @@ module.exports = (sequelize, DataTypes) => {
     },
     enfermedades_previas: {
       type: DataTypes.STRING(2000),
-      defaultValue: `ninguna`,
+      defaultValue: "ninguna",
       allowNull: false,
     },
     intervenciones_previas: {
       type: DataTypes.STRING(2000),
-      defaultValue: `ninguna`,
+      defaultValue: "ninguna",
       allowNull: false,
     },
     alergias: {
       type: DataTypes.STRING(2000),
-      defaultValue: `ninguna`,
+      defaultValue: "ninguna",
       allowNull: false,
     },
     vacunas: {
       type: DataTypes.STRING(2000),
-      defaultValue: `ninguna`,
+      defaultValue: "ninguna",
       allowNull: false,
     },
     medicamentos_actuales: {
       type: DataTypes.STRING(2000),
-      defaultValue: `ninguno`,
+      defaultValue: "ninguno",
       allowNull: false,
     },
     enfermedades_hereditarias: {
       type: DataTypes.STRING(2000),
-      defaultValue: `ninguna`,
+      defaultValue: "ninguna",
       allowNull: false,
     },
     dieta: {
       type: DataTypes.STRING(2000),
-      defaultValue: `ninguna`,
+      defaultValue: "ninguna",
       allowNull: false,
     },
     insomnio: {
@@ -47,8 +47,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     sustancias: {
-      type: DataTypes.ENUM(`tabaco`, `alcohol`, `drogas`, `ninguna`),
-      defaultValue: `ninguna`,
+      type: DataTypes.ENUM("tabaco", "alcohol", "drogas", "ninguna"),
+      defaultValue: "ninguna",
       allowNull: false,
     },
     embarazo: {
@@ -68,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     metodos_anticonceptivos: {
       type: DataTypes.STRING(1000),
-      defaultValue: `ninguno`,
+      defaultValue: "ninguno",
       allowNull: false,
     },
     convulciones: {
@@ -87,14 +87,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {});
-  
+
   // --------------------------------------- DEFINE ASSOCIATION ---
   Medical_History.associate = models => {
     Medical_History.belongsTo(models.Patient, {
-      foreignKey: `patient_id`,
-      as: `patient`,
-      onDelete: `CASCADE`,
-      onUpdate: `CASCADE`,
+      foreignKey: "patient_id",
+      as: "patient",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
   };
 

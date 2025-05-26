@@ -1,6 +1,6 @@
 .formPatient 
   h1 Registrar Paciente
-  form()
+  form(action="http://localhost:8000/patient" name="POST")
     .register
       //- Nombre
       .input 
@@ -49,4 +49,4 @@
         input(type="text" id="contacto_particular" name="contacto_particular" autocomplete="off" spellcheck="false" value="2664006699")
       //- Boton Enviar
       .input
-        input(type="submit" id="register" value="Registrar")  
+        input(type="submit" id="register" calss="sendBtn" name="POST" value="Registrar") 

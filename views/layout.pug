@@ -2,17 +2,34 @@ doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="viewport" content="width=device-width initial-scale=1.0")
     
-    link(rel="stylesheet", href="../public/styles/index.css")
-    link(rel="stylesheet", href=styles)
+    link(rel="icon" href="../public/images/logo_unimed.png" type="image/png")
+    link(rel="stylesheet" href="../public/styles/index.css")
+    
+    each style in styles
+      link(rel="stylesheet" href=style)
 
     title=title
   body 
     header
       block nav
+      .logo 
+        img(
+          src="../public/images/logo_unimed.png" 
+          alt="logo_unimed" 
+          width="50px" 
+          height="50px"
+        )
+        h1 UniMed
+    
     main
       block main 
+    
     footer 
       block footer
-    script(src=script defer)
+      .footer 
+        p &copy; 2025 MiSitioWeb
+    
+    each script in scripts
+      script(type="module" src=script defer)

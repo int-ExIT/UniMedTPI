@@ -1,15 +1,15 @@
-const sequelize = require(`../config/bdd`);
-const { DataTypes } = require(`sequelize`);
+const sequelize = require("../config/bdd");
+const { DataTypes } = require("sequelize");
 
 // ---------------------------------------------- IMPORT MODELS ---
-const Bed = require(`./bed.model`)(sequelize, DataTypes);
-const User = require(`./user.model`)(sequelize, DataTypes);
-const Study = require(`./study.model`)(sequelize, DataTypes);
-const Login = require(`./login.model`)(sequelize, DataTypes);
-const Patient = require(`./patient.model`)(sequelize, DataTypes);
-const Admission = require(`./admission.model`)(sequelize, DataTypes);
-const Specialty = require(`./specialty.model`)(sequelize, DataTypes);
-const Medical_History = require(`./medicalHistory.model`)(sequelize, DataTypes);
+const Bed = require("./bed.model")(sequelize, DataTypes);
+const User = require("./user.model")(sequelize, DataTypes);
+const Study = require("./study.model")(sequelize, DataTypes);
+const Login = require("./login.model")(sequelize, DataTypes);
+const Patient = require("./patient.model")(sequelize, DataTypes);
+const Admission = require("./admission.model")(sequelize, DataTypes);
+const Specialty = require("./specialty.model")(sequelize, DataTypes);
+const Medical_History = require("./medicalHistory.model")(sequelize, DataTypes);
 
 // ----------------------------------------------- CARGA MODELS ---
 const models = {

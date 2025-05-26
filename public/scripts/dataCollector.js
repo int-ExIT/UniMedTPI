@@ -1,37 +1,27 @@
-// Toma un formulario
-const $form = document.querySelector(`form`);
+import queryFetch from './fetch.js';
 
-$form.addEventListener(`submit`, evt => {
-  // Evita que el formulario se envie
-  evt.preventDefault();
+// Selecciono TODOS los elementos del tipo form y los guardo en un Array
+const $forms = Array.from(document.querySelectorAll("form"));
 
-  /**
-   * Crea un objeto con los datos recolectados del formulario 
-   * luego, este podra ser usado para las consultas a la bdd 
-   */
-  const formData = new FormData($form);
-  const body = Object.fromEntries(formData);
-  
-  fetch(`http://localhost:8000/patient`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  }).then(response => {
-    // Chequeo el codigo de estado de la rsta
-    if (response.ok) return response.json();
+// Itero sobre el Array para asignarle a cada uno de estos la funcion recolectora
+for (const $form of $forms) {
+  $form.addEventListener("submit", async evt => {
+    // Prevengo que el formulario recargue la pagina
+    evt.preventDefault();
 
-    // Si el estado no es correcto devuelvo un error
-    return response.json().then(data => {
-      throw new Error(data.message);
-    });
-  }).then(result => {
-    // PROBABLEMENTE TENGA QUE CAMBIAR ESTA LINEA POR ALGO MAS GENERICO
-    const idPatient = result.body;
+    // Instancio un objeto que contenga todos los datos del formulario
+    const formData = new FormData($form);
+    const body = Object.fromEntries(formData);
 
-    console.log(result.message);
-  }).catch(err => {
-    console.error(`Error Fetch: ${err}`);
+    // Identifico el metodo HTTP y la URL de la query
+    const action = $form.action;
+    const method = $form.name;
+
+    try {
+      const element = await queryFetch(action, method, body);
+
+      console.log(`Element of dataCollector: ${element.nombres}`);
+    }
+    catch (err) { console.error(`Fetch ${err}`) }
   });
-});
+}

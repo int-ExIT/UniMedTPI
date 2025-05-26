@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(`User`, {
+  const User = sequelize.define("User", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     sexo: {
-      type: DataTypes.ENUM(`hombre`, `mujer`),
+      type: DataTypes.ENUM("hombre", "mujer"),
       allowNull: false,
     },
     edad: {
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     turno: {
-      type: DataTypes.ENUM(`mañana`, `tarde`, `noche`),
+      type: DataTypes.ENUM("mañana", "tarde", "noche"),
       allowNull: false,
     },
   }, {}); // El tercer parametro del metodo '.define()' sirve para controlar los comportamientos de la tabla
@@ -59,17 +59,17 @@ module.exports = (sequelize, DataTypes) => {
      * en el modelo debil
      */
     User.hasOne(models.Login, {
-      foreignKey: `user_id`,
-      as: `login`,
-      onDelete: `CASCADE`,
-      onUpdate: `CASCADE`,
+      foreignKey: "user_id",
+      as: "login",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
 
     User.hasOne(models.Specialty, {
-      foreignKey: `user_id`,
-      as: `specialty`,
-      onDelete: `CASCADE`,
-      onUpdate: `CASCADE`,
+      foreignKey: "user_id",
+      as: "specialty",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
 
     /**
@@ -79,14 +79,14 @@ module.exports = (sequelize, DataTypes) => {
     */
     User.belongsToMany(models.Patient, {
       through: models.Admission,
-      foreignKey: `user_id`,
-      as: `admission`,
+      foreignKey: "user_id",
+      as: "admission",
     });
 
     User.belongsToMany(models.Patient, {
       through: models.Study,
-      foreignKey: `user_id`,
-      as: `study`,
+      foreignKey: "user_id",
+      as: "study",
     });
   };
 

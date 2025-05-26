@@ -5,14 +5,10 @@ block nav
     a(href="http://www.google.com") Inicio
     a(href="http://www.google.com") Perfil
     a(href="http://www.google.com") Otros 
-  .logo 
-    img(src="../public/images/logo_unimed.png" alt="logo_unimed" width="50px" height="50px")
-    h1 UniMed
 
 block main 
   include ./components/patient.form.pug 
+  include ./components/patient.table.pug 
   include ./components/patient.search.pug 
 
 block footer 
-  .footer 
-    p &copy; 2025 MiSitioWeb

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Study = sequelize.define(`Study`, {
+  const Study = sequelize.define("Study", {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     study_type: {
-      type: DataTypes.ENUM(`revicion`, `estudio`),
+      type: DataTypes.ENUM("revicion", "estudio"),
       allowNull: false,
     },
     resultado: {
@@ -23,6 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {});
-  
+
   return Study;
 };

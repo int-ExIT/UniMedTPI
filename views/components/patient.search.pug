@@ -1,18 +1,18 @@
 .patientSearch 
-  form()
+  form(action="http://localhost:8000/patient/dni" name="POST")
     .register
       //- DNI
       .input 
-        label(for="searchPatiente") Ingrese un Paciente 
+        label(for="dni") Ingrese un Paciente 
         input(
-          type="text" id="searchPatiente" 
-          name="searchPatiente" 
+          type="text" 
+          id="dni" 
+          name="dni" 
           autocomplete="off" 
           spellcheck="false" 
           value="" 
-          placeholder="Buscar"
+          placeholder="Ingrese DNI" 
         )
       //- Boton Enviar
       .input
-        input(type="submit" id="register" value="Buscar")  
-      
+        input(type="submit" id="register" calss="sendBtn" value="Buscar")  

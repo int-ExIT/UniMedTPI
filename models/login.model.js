@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Login = sequelize.define(`Login`, {
+  const Login = sequelize.define("Login", {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     indexes: [
       {
         unique: true,
-        fields: [`user_name`],
+        fields: ["user_name"],
       }
     ]
   });
@@ -27,10 +27,10 @@ module.exports = (sequelize, DataTypes) => {
   // --------------------------------------- DEFINE ASSOCIATION ---
   Login.associate = models => {
     Login.belongsTo(models.User, {
-      foreignKey: `user_id`,
-      as: `user`,
-      onDelete: `CASCADE`,
-      onUpdate: `CASCADE`,
+      foreignKey: "user_id",
+      as: "user",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
   };
 

@@ -1,10 +1,14 @@
-const router = require(`express`).Router();
+const router = require("express").Router();
 
-router.get(`/`, (req, res) => {
-  res.status(200).render(`index`, {
+router.get("/", (req, res) => {
+  res.status(200).render("index", {
     title: "UniMed",
-    script: "../public/scripts/verify.js",
-    styles: "../public/styles/login.css",
+    scripts: [
+      "../public/scripts/verify.js",
+    ],
+    styles: [
+      "../public/styles/login.css",
+    ],
   });
 });
 

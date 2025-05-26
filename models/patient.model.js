@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Patient = sequelize.define(`Patient`, {
+  const Patient = sequelize.define("Patient", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     sexo: {
-      type: DataTypes.ENUM(`hombre`, `mujer`),
+      type: DataTypes.ENUM("hombre", "mujer"),
       allowNull: false,
     },
     edad: {
@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
     indexes: [
       {
         unique: true,
-        fields: [`dni`, `id`],
+        fields: ["dni", "id"],
       }
     ]
   });
@@ -69,22 +69,22 @@ module.exports = (sequelize, DataTypes) => {
   // --------------------------------------- DEFINE ASSOCIATION ---
   Patient.associate = models => {
     Patient.hasOne(models.Medical_History, {
-      foreignKey: `patient_id`,
-      as: `medical history`,
-      onDelete: `CASCADE`,
-      onUpdate: `CASCADE`,
+      foreignKey: "patient_id",
+      as: "medical history",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
 
     Patient.belongsToMany(models.User, {
       through: models.Admission,
-      foreignKey: `patient_id`,
-      as: `admission`
+      foreignKey: "patient_id",
+      as: "admission"
     });
   
     Patient.belongsToMany(models.User, {
       through: models.Study,
-      foreignKey: `patient_id`,
-      as: `study`,
+      foreignKey: "patient_id",
+      as: "study",
     });
   };
 

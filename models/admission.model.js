@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Admission = sequelize.define(`Admission`, {
+  const Admission = sequelize.define("Admission", {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     sintomas: {
       type: DataTypes.STRING,
-      defaultValue: `none`,
+      defaultValue: "none",
     },
     ingreso: {
       type: DataTypes.DATE,
@@ -37,10 +37,10 @@ module.exports = (sequelize, DataTypes) => {
 
   Admission.associate = models => {
     Admission.belongsTo(models.Bed, {
-      foreignKey: `bed_id`,
-      as: `bed`,
-      onDelete: `CASCADE`,
-      onUpdate: `CASCADE`,
+      foreignKey: "bed_id",
+      as: "bed",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
   };
 

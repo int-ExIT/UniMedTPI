@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Bed = sequelize.define(`Bed`, {
+  const Bed = sequelize.define("Bed", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     ala: {
-      type: DataTypes.ENUM(`norte`, `sur`, `este`, `oeste`),
+      type: DataTypes.ENUM("norte", "sur", "este", "oeste"),
       allowNull: false,
     },
     numero_habitacion: {
@@ -24,13 +24,13 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     estado: {
-      type: DataTypes.ENUM(`limpia`, `por limpiar`),
+      type: DataTypes.ENUM("limpia", "por limpiar"),
       allowNull: false,
     },
     restrict_genero: {
-      type: DataTypes.ENUM(`hombre`, `mujer`, `none`),
+      type: DataTypes.ENUM("hombre", "mujer", "none"),
       allowNull: false,
-      defaultValue: `none`,
+      defaultValue: "none",
     },
     disponible: {
       type: DataTypes.BOOLEAN,
@@ -44,10 +44,10 @@ module.exports = (sequelize, DataTypes) => {
   // --------------------------------------- DEFINE ASSOCIATION ---
   Bed.associate = models => {
     Bed.hasOne(models.Admission, {
-      foreignKey: `bed_id`,
-      as: `admission`,
-      onDelete: `CASCADE`,
-      onUpdate: `CASCADE`,
+      foreignKey: "bed_id",
+      as: "admission",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
   };
 
