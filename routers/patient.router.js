@@ -1,6 +1,5 @@
+const CONTROLLER = require("../controls/patient.controler");
 const router = require("express").Router();
-const patientControler = require("../controls/patient.controler");
-const answer = require("../logs/answers");
 
 router.get("/patient", (req, res) => {
   res.status(200).render("patient", {
@@ -19,42 +18,10 @@ router.get("/patient", (req, res) => {
 });
 
 // ----------------------------------------------- CRUD Patient ---
-router.get("/patient/all", async (req, res) => {
-  try {
-    const patients = await patientControler.selectAll();
+router.get("/patient/all", CONTROLLER.selectAll);
 
-    answer.success(res, 200, "(Patient) Successful Selections", patients);
-  }
-  catch (err) {
-    answer.error(res, 500, `(Patient) Unsuccessful Selections ${err}`);
-  }
-});
+router.post("/patient/dni", CONTROLLER.selectOne);
 
-router.post("/patient/dni", async (req, res) => {
-  try {
-    const patient = await patientControler.selectOne(req.body.dni);
-
-    answer.success(res, 200, "(Patient) Successful Selection", patient);
-  }
-  catch (err) {
-    answer.error(res, 500, `(Patient) Unsuccessful Selection ${err}`);
-  }
-});
-
-router.post("/patient", async (req, res) => {
-  try {
-    const patient = await patientControler.insert(req.body);
-
-    answer.success(res, 201, "(Patient) Successful Insertion", patient);
-  }
-  catch (err) {
-    if (err.name === "SequelizeUniqueConstraintError") {
-      answer.error(res, 400, "(Patient) Unsuccessful Insertion: Existing Patient");
-    }
-    else {
-      answer.error(res, 500, `(Patient) Unsuccessful Insertion ${err}`);
-    }
-  }
-});
+router.post("/patient", CONTROLLER.insert);
 
 module.exports = router;
