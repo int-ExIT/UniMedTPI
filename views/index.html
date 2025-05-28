@@ -21,13 +21,14 @@
       gap: 2px;
     }
   </style>
+  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.min.css"> -->
 
   <title>Document</title>
 </head>
 
 <body>
   <div class="content">
-    <form action="http://localhost:8000/patient/one" name="DELETE">
+    <form>
       <label for="nombre">Nombre </label>
       <input type="text" name="nombre" id="nombre">
 
@@ -55,11 +56,39 @@
       <input type="submit" class="sendBtn" value="Enviar">
     </form>
   </div>
+
   <div class="content">
     <p id="console">Esta es la consola</p>
   </div>
 
-  <script>
+  <div class="table">
+    <table id="myTable">
+      <caption>Tabla de Prueba</caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Edad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>John</td>
+          <td>Doe</td>
+          <td>39</td>
+        </tr>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+  <!-- <script src="//cdn.datatables.net/2.3.1/js/dataTables.min.js" type="module"></script> -->
+  <script type="module">
+    // let table = new DataTable('#myTable');
+
     const $forms = Array.from(document.querySelectorAll("form"));
     const $console = document.querySelector("#console");
 
@@ -68,12 +97,12 @@
 
         evt.preventDefault();
 
-        const action = $form.action;
-        const method = $form.name;
         const formData = new FormData($form);
-        const body = Object.fromEntries(formData);
-
-        $console.innerHTML = action + " " + (method);
+        const body = Object.fromEntries(
+          Array.from(formData).filter(value => value[1] !== "")
+        );
+        
+        $console.innerHTML = JSON.stringify(body);
       });
     }
   </script>

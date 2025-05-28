@@ -31,12 +31,10 @@ Object.values(models).forEach(model => {
 // ----------------------------------------------- CARGA DE BDD ---
 async function loadTables(force) {
   try {
-    await sequelize.sync({ force: force });
-    console.log(`Tablas cargadas correctamente`);
+    await sequelize.sync({ force });
+    console.log(`Tables Loaded Successfully`);
   }
-  catch (err) {
-    console.error(`Error al cargar las tablas: ${err}`);
-  }
+  catch (err) { console.error(`Error Loading Tables: ${err}`); }
 }
 
 module.exports = {

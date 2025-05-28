@@ -1,46 +1,101 @@
-const answer = require("../logs/answers");
-const { Patient } = require("../models/index.model");
-
-const ENTITY = Patient;
+const { Patient: MODEL } = require("../models/index.model");
 
 async function insert(req, res) {
   try {
-    const patient = await ENTITY.create(req.body);
+    const patient = await MODEL.create(req.body);
 
-    answer.success(res, 201, `(Patient) Successful Insertion`, patient);
+    res.status(201).json({
+      message: `(${MODEL.name}) Successful Insertion`,
+      body: patient,
+    });
   }
   catch (err) {
     if (err.name === `SequelizeUniqueConstraintError`) {
-      answer.error(res, 400, `(Patient) Unsuccessful Insertion: Existing Patient`);
+      res.status(400).json({
+        message: `(${MODEL.name}) Unsuccessful Insertion`,
+        body: `Error: Registered ${MODEL.name}`,
+      });
     }
     else {
-      answer.error(res, 500, `(Patient) Unsuccessful Insertion ${err}`);
+      res.status(500).json({
+        message: `(${MODEL.name}) Unsuccessful Insertion`,
+        body: `Error: ${err}`,
+      });
     }
   }
 }
 
-// Modificar esta
 async function selectOne(req, res) {
   try {
-    const patient = await ENTITY.findOne({
-      where: { dni: req.body.dni }
+    const patient = await MODEL.findOne({
+      where: { dni: req.params.dni }
     });
 
-    answer.success(res, 200, `(Patient) Successful Selection`, patient);
+    res.status(200).json({
+      message: `(${MODEL.name}) Successful Selection`,
+      body: patient,
+    });
   }
   catch (err) {
-    answer.error(res, 500, `(Patient) Unsuccessful Selection ${err}`);
+    res.status(500).json({
+      message: `(${MODEL.name}) Unsuccessful Selection`,
+      body: `Error: ${err}`,
+    });
   }
 }
 
 async function selectAll(req, res) {
   try {
-    const patients = await ENTITY.findAll();
-
-    answer.success(res, 200, `(Patient) Successful Selections`, patients);
+    const patients = await MODEL.findAll();
+    
+    res.status(200).json({ 
+      message: `(${MODEL.name}) Successful All Selections`, 
+      body: patients,
+    });
   }
   catch (err) {
-    answer.error(res, 500, `(Patient) Unsuccessful Selections ${err}`);
+    res.status(500).json({ 
+      message: `(${MODEL.name}) Unsuccessful All Selections`, 
+      body: `Error: ${err}`,
+    });
+  }
+}
+
+async function update(req, res) {
+  try {
+    const affectedRows = await MODEL.update(req.body, {
+      where: { id: req.params.id }
+    });
+    
+    res.status(200).json({ 
+      message: `(${MODEL.name}) Successful Update`, 
+      body: `Affected Rows: ${affectedRows}`, 
+    });
+  }
+  catch (err) {
+    res.status(500).json({ 
+      message: `(${MODEL.name}) Unsuccessful Update`, 
+      body: `Error: ${err}`, 
+    });
+  }
+}
+
+async function remove(req, res) {
+  try {
+    const affectedRows = await MODEL.destroy({
+      where: { id: req.params.id }
+    });
+    
+    res.status(200).json({ 
+      message: `(${MODEL.name}) Successful Removal`, 
+      body: `Affected Rows: ${affectedRows}`, 
+    });
+  }
+  catch (err) {
+    res.status(500).json({ 
+      message: `(${MODEL.name}) Unsuccessful Removal`, 
+      body: `Error: ${err}`, 
+    });
   }
 }
 
@@ -48,4 +103,6 @@ module.exports = {
   insert,
   selectOne,
   selectAll,
+  update,
+  remove,
 };

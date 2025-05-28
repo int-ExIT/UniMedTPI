@@ -1,27 +1,21 @@
+// Import ES6 para el reconocimiento del front-end
 import queryFetch from './fetch.js';
-
-// Selecciono TODOS los elementos del tipo form y los guardo en un Array
+// Almaceno TODOS los elementos del tipo form en un Array
 const $forms = Array.from(document.querySelectorAll("form"));
-
-// Itero sobre el Array para asignarle a cada uno de estos la funcion recolectora
-for (const $form of $forms) {
+// Asigno a cada formulario la funcion recolectora
+for (let $form of $forms) {
   $form.addEventListener("submit", async evt => {
     // Prevengo que el formulario recargue la pagina
     evt.preventDefault();
-
-    // Instancio un objeto que contenga todos los datos del formulario
+    // Instancio un objeto con todos los datos del formulario
     const formData = new FormData($form);
-    const body = Object.fromEntries(formData);
-
-    // Identifico el metodo HTTP y la URL de la query
-    const action = $form.action;
-    const method = $form.name;
-
-    try {
-      const element = await queryFetch(action, method, body);
-
-      console.log(`Element of dataCollector: ${element.nombres}`);
-    }
+    // Filtro aquellos elementos que contengan informacion
+    const body = Object.fromEntries(
+      Array.from(formData).filter(value => value[1] !== "")
+    );
+    
+    // try { await queryFetch("http://localhost:8000/patient/8", "DELETE", body); }
+    try { await queryFetch($form.action, $form.method, body); }
     catch (err) { console.error(`Fetch ${err}`) }
   });
 }

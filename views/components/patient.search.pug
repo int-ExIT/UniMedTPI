@@ -1,5 +1,5 @@
 .patientSearch 
-  form(action="http://localhost:8000/patient/dni" name="POST")
+  form(action="http://localhost:8000/patient/all" method="GET")
     .register
       //- DNI
       .input 
@@ -10,7 +10,7 @@
           name="dni" 
           autocomplete="off" 
           spellcheck="false" 
-          value="" 
+          value="41682078" 
           placeholder="Ingrese DNI" 
         )
       //- Boton Enviar

@@ -1,27 +1,41 @@
 const CONTROLLER = require("../controls/patient.controler");
 const router = require("express").Router();
 
-router.get("/patient", (req, res) => {
+// --------------------------------------------- RENDER Patient ---
+router.get("/", (req, res) => {
   res.status(200).render("patient", {
     title: "UniMed-Reception",
     scripts: [
-      "../public/scripts/dataCollector.js",
+      // Script jQuery (Necesario para DataTables)
+      "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js",
       // Script DataTables
-      // "cdn.datatables.net/2.3.1/js/dataTables.min.js",
+      "https://cdn.datatables.net/2.3.1/js/dataTables.min.js",
+      // Script Bootstrap
+      // "https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js",
+      // Scripts genericos
+      "../public/scripts/patient/patient.js",
+      "../public/scripts/dataCollector.js",
     ],
     styles: [
-      "../public/styles/patient.css",
       // Style DataTables
-      // "cdn.datatables.net/2.3.1/css/dataTables.dataTables.min.css",
+      "https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.min.css",
+      // Style Bootstrap
+      // "https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css",
+      // Styles genericos
+      "../public/styles/patient.css",
     ],
   });
-});
+}); // ACHICAR ESTE METODO
 
 // ----------------------------------------------- CRUD Patient ---
-router.get("/patient/all", CONTROLLER.selectAll);
+router.post("/new", CONTROLLER.insert);
 
-router.post("/patient/dni", CONTROLLER.selectOne);
+router.get("/get-one/:dni", CONTROLLER.selectOne);
 
-router.post("/patient", CONTROLLER.insert);
+router.get("/get-all", CONTROLLER.selectAll);
+
+router.put("/:id", CONTROLLER.update);
+
+router.delete("/:id", CONTROLLER.remove);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 
+// ----------------------------------------------- RENDER Login ---
 router.get("/", (req, res) => {
   res.status(200).render("index", {
     title: "UniMed",
@@ -11,5 +12,7 @@ router.get("/", (req, res) => {
     ],
   });
 });
+
+// ------------------------------------------------- CRUD Login ---
 
 module.exports = router;

@@ -1,4 +1,4 @@
-// Exporto la duncion usando el moduo ES6 para que el front-end lo pueda reconocer
+// Export ES6 para el reconocimiento del front-end
 export default async function queryFetch(url, method, body) {
   try {
     const response = await fetch(url, {
@@ -16,7 +16,9 @@ export default async function queryFetch(url, method, body) {
     }
 
     const result = await response.json();
-    console.log(result.message);
+    
+    console.log(`Result fetch: ${result.message}`);
+    console.log(`Element: ${JSON.stringify(result.body)}`);
     
     return result.body;
   }

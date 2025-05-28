@@ -1,41 +1,39 @@
-.patientSearch {
+.cont {
   display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
   align-items: center;
-  position: absolute;
-  left: 0px;
-  width: 230px;
-  height: 100%;
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(0, 0, 0, 0.7);
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
   font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  position: relative;
+  height: 90%;
+  width: auto;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.patientSearch { 
+  display: flex;
+  flex-direction: column; 
 }
 
 .patientTable {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  align-items: center;
-  position: absolute;
-  right: 55px;
-  left: 285px;
-  width: auto;
-  height: 90%;
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+  height: 90% !important;
 }
 
 .formPatient {
-  display: none;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   align-items: center;
   position: absolute;
   right: 0px;
-  color: rgba(0, 0, 0, 0.7);
-  background-color: rgba(255, 255, 255, 0.7);
   width: auto;
-  height: 100%;
+  height: 90%;
   color: rgba(255, 255, 255, 0.7);
   background-color: rgba(0, 0, 0, 0.7);
   font-family: Arial, Helvetica, sans-serif;
@@ -53,9 +51,6 @@ table {
   width: 780px;
   height: auto;
   padding: 10px;
-  border-radius: 20px;
-  color: rgba(0, 0, 0, 0.7);
-  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .register {
@@ -64,7 +59,7 @@ table {
   align-items: center;
   height: 331px;
   width: 200px;
-  gap: 30px;
+  /* gap: 30px; */
 }
 
 #register {
