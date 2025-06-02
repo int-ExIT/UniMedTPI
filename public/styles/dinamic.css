@@ -1,0 +1,93 @@
+.the_main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  align-items: center;
+  position: relative;
+  /* if (displayCenter !== none) */
+  height: 95%;
+  width: 95%;
+  /* if (displayCenter === none) */
+  /* width: auto; */
+  /* height: auto; */
+  gap: 30px;
+}
+
+.main_center {
+  display: block;
+  background-color: rgb(21, 25, 29);
+  border-radius: 5px;
+  transition: width 1s;
+  position: absolute;
+  padding: 5px;
+  border: solid;
+  height: 95%;
+  width: 98%;
+}
+.right_shift {
+  transition: width 1s;
+  width: 82%;
+}
+.left_shift {
+  transition: width 1s;
+  width: 66%;
+}
+
+/* Admission Register */
+.left_main {
+  display: flex;
+  overflow: hidden;
+  transition: opacity 1s;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  position: absolute;
+  opacity: 0;
+  height: 95%;
+  width: 18%;
+  left: 5px;
+}
+.look_left {
+  transition: opacity 1s;
+  opacity: 1;
+}
+
+/* Patient Register */
+.main_right {
+  display: flex;
+  overflow: hidden;
+  transition: opacity 1s;
+  flex-direction: column;
+  justify-content: start;
+  align-items: end;
+  position: absolute;
+  opacity: 0;
+  height: 95%;
+  width: 34%;
+  right: 5px;
+}
+.look_right {
+  transition: opacity 1s;
+  opacity: 1;
+}
+
+td button {
+  width: auto;
+  height: auto;
+  padding: 2px 10px;
+  margin: 0px;
+}
+td .update {
+  background-color: rgba(17, 155, 17, 0.7);
+}
+td .update:hover {
+  background-color: rgba(17, 155, 17, 1);
+}
+td .delete {
+  background-color: rgba(155, 33, 17, 0.7);
+}
+td .delete:hover {
+  background-color: rgba(155, 33, 17, 1);
+}

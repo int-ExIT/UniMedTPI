@@ -1,0 +1,24 @@
+form(action="http://localhost:8000/admission/new" method="POST")
+  .register
+    //- DNI
+    .input 
+      label(for="patient_dni") DNI 
+      input(type="text" id="patient_dni" autocomplete="off" spellcheck="false" value="41682078" placeholder="Ingrese DNI" autofocus)
+    //- Bed
+    .input 
+      label(for="bed_id") Habitacion 
+      input(type="text" id="bed_id" autocomplete="off" spellcheck="false" value="H1" placeholder="Ingrese Habitacion")
+    //- Motive
+    .input 
+      label(for="motivo") Motivo
+      select(id="motivo") 
+        option(value="Cita Medica") Cita Medica
+        option(value="Derivacion") Derivacion
+        option(value="Urgencia") Urgencia
+    //- Symptoms
+    .input 
+      label(for="sintomas") Sintomas 
+      textarea(id="sintomas")
+    //- Boton Enviar
+    .buttons
+      button Registrar 

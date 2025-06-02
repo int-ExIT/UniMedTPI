@@ -1,4 +1,5 @@
 const { Patient: MODEL } = require("../models/index.model");
+const { Op } = require("sequelize");
 
 async function insert(req, res) {
   try {
@@ -46,16 +47,25 @@ async function selectOne(req, res) {
 
 async function selectAll(req, res) {
   try {
-    const patients = await MODEL.findAll();
+    let patients;
     
-    res.status(200).json({ 
-      message: `(${MODEL.name}) Successful All Selections`, 
+    if (req.params.dni) patients = await MODEL.findAll({
+      where: {
+        dni: {
+          [Op.like]: `${req.params.dni}%`
+        }
+      }
+    });
+    else patients = await MODEL.findAll();
+
+    res.status(200).json({
+      message: `(${MODEL.name}) Successful All Selections`,
       body: patients,
     });
   }
   catch (err) {
-    res.status(500).json({ 
-      message: `(${MODEL.name}) Unsuccessful All Selections`, 
+    res.status(500).json({
+      message: `(${MODEL.name}) Unsuccessful All Selections`,
       body: `Error: ${err}`,
     });
   }
@@ -66,16 +76,16 @@ async function update(req, res) {
     const affectedRows = await MODEL.update(req.body, {
       where: { id: req.params.id }
     });
-    
-    res.status(200).json({ 
-      message: `(${MODEL.name}) Successful Update`, 
-      body: `Affected Rows: ${affectedRows}`, 
+
+    res.status(200).json({
+      message: `(${MODEL.name}) Successful Update`,
+      body: `Affected Rows: ${affectedRows}`,
     });
   }
   catch (err) {
-    res.status(500).json({ 
-      message: `(${MODEL.name}) Unsuccessful Update`, 
-      body: `Error: ${err}`, 
+    res.status(500).json({
+      message: `(${MODEL.name}) Unsuccessful Update`,
+      body: `Error: ${err}`,
     });
   }
 }
@@ -85,16 +95,16 @@ async function remove(req, res) {
     const affectedRows = await MODEL.destroy({
       where: { id: req.params.id }
     });
-    
-    res.status(200).json({ 
-      message: `(${MODEL.name}) Successful Removal`, 
-      body: `Affected Rows: ${affectedRows}`, 
+
+    res.status(200).json({
+      message: `(${MODEL.name}) Successful Removal`,
+      body: `Affected Rows: ${affectedRows}`,
     });
   }
   catch (err) {
-    res.status(500).json({ 
-      message: `(${MODEL.name}) Unsuccessful Removal`, 
-      body: `Error: ${err}`, 
+    res.status(500).json({
+      message: `(${MODEL.name}) Unsuccessful Removal`,
+      body: `Error: ${err}`,
     });
   }
 }

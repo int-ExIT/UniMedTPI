@@ -1,19 +1,17 @@
 body {
   /* Fijar Footer */
-  display: grid;
   width: 100%;
+  display: grid;
   min-height: 100dvh;
   grid-template-rows: auto 1fr auto;
 
   /* Establecer Imag. Como Fondo */
-  background-image: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.4)
-  ), url(../images/ramon_carrillo.jpg);
-  background-size: cover;
+  background-image: linear-gradient(0deg,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)), url(../images/ramon_carrillo.jpg);
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 
   /* Otras Espesificaciones */
   box-sizing: border-box;
@@ -25,29 +23,42 @@ header {
   display: flex;
   position: relative;
   flex-direction: row;
-  height: 70px;
   background-color: rgba(0, 0, 0, 0.7);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16pt;
+  height: 70px;
   color: rgba(255, 255, 255, 0.5);
+}
+.navbar {
+  display: inherit;
+  flex-direction: inherit;
+  justify-content: start;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 50px;
+}
+.logo {
+  display: inherit;
+  flex-direction: inherit;
+  align-items: center;
+  font-size: initial;
+  position: absolute;
+  padding: 10px 15px;
+  color: rgb(63, 82, 252);
+  right: 0px;
+  gap: 5px;
 }
 
 main {
-  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 footer {
   display: flex;
-  justify-content: start;
-  align-items: center;
-  box-sizing: border-box;
-  height: 50px;
-  margin: 0px;
-  padding: 10px 15px;
   background-color: rgba(0, 0, 0, 0.7);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12pt;
@@ -58,7 +69,6 @@ h1 {
   padding: 4px 0px 0px 0px;
   margin: 0px;
 }
-
 a {
   text-decoration: none;
   color: inherit;
@@ -67,31 +77,30 @@ header a:hover {
   color: white;
 }
 
-.logo {
-  display: inherit;
-  flex-direction: inherit;
-  position: absolute;
-  right: 0px;
-  align-items: center;
-  gap: 5px;
-  padding: 10px 15px;
-  font-size: initial;
-  color: rgb(63, 82, 252);
+input {
+  width: 200px;
+  height: 38px;
+}
+select {
+  width: 200px;
+  height: 38px;
+}
+textarea {
+  width: 200px;
+  height: 150px;
 }
 
-.navbar {
-  display: inherit;
-  flex-direction: inherit;
-  justify-content: start;
-  align-items: center;
-  gap: 50px;
-  padding: 10px 15px;
+.buttons {
+  display: flex;
+  font-size: 14pt;
+  justify-content: center;
+  align-items: end;
+  height: 100%;
 }
 
 .input {
   display: flex;
   flex-direction: column;
-  width: 200px;
 }
 
 .input label {
@@ -100,12 +109,48 @@ header a:hover {
 }
 
 .input input {
+  background-color: rgb(21, 25, 29, 0.8);
+  transition: all 1s;
   font-size: 18pt;
+  outline: none;
   margin: 3px 0px;
   border: none;
-  background-color: rgba(126, 126, 126, 0.4);
   color: rgba(255, 255, 255, 0.7);
 }
-.input input:hover {
-  background-color: rgba(126, 126, 126, 0.7);
+.input input:hover, input:focus {
+  color: rgba(255, 255, 255, 1);
+  transition: all 1s;
+  background-color: rgb(21, 25, 29, 1);
+}
+
+.input select {
+  background-color: rgb(21, 25, 29, 0.8);
+  transition: all 1s;
+  font-size: 18pt;
+  outline: none;
+  margin: 3px 0px;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+.input select:hover, select:focus {
+  color: rgba(255, 255, 255, 1);
+  transition: all 1s;
+  background-color: rgb(21, 25, 29, 1);
+}
+
+.input textarea {
+  background-color: rgb(21, 25, 29, 0.8);
+  transition: all 1s;
+  font-size: 14pt;
+  overflow: hidden;
+  outline: none;
+  margin: 3px 0px;
+  resize: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+.input textarea:hover, textarea:focus {
+  color: rgba(255, 255, 255, 1);
+  transition: all 1s;
+  background-color: rgb(21, 25, 29, 1);
 }

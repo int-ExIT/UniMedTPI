@@ -1,13 +1,15 @@
 extends layout
 
-block nav
-  nav.navbar
-    a(href="http://www.google.com") Inicio
-    a(href="http://www.google.com") Perfil
-    a(href="http://www.google.com") Otros 
-
-block main
-  .cont
-    include ./components/patient.form.pug 
+block header
+  .search_patient
+    label(for="search") Busqueda 
+    input(type="text" id="search" autocomplete="off" spellcheck="false" value="" placeholder="Ingrese DNI" autofocus)
+    button(id="register") 
+block left_main
+  #l_main.left_main 
+    include ./components/admission.register.pug 
+block main_right
+  #main_r.main_right
+    include ./components/patient.register.pug 
 
 block footer 

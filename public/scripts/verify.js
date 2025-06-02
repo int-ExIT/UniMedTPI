@@ -1,40 +1,36 @@
-const $form = document.querySelector("form");
-const $user = document.querySelector("#user");
-const $password = document.querySelector("#pass");
 const $userHelp = document.querySelector("#userHelp");
 const $passHelp = document.querySelector("#passHelp");
 const $error = document.querySelector(".error");
+const $form = document.querySelector("form");
+const $user = document.querySelector("#user");
+const $pass = document.querySelector("#pass");
 const $look = document.querySelector("#look");
 
 $form.addEventListener("submit", event => {
   event.preventDefault();
   
-  let user = $user.value;
-  let password = $password.value;
-  
-  let flag = checkFields(user, password);
+  let flag = checkFields($user.value, $pass.value);
   
   // EN ESTE PUNTO CORRESPONDE LA CORROBORACION DEL TOKEN
-  if (flag) checkUser(user, password);
+  if (flag) checkUser($user.value, $pass.value);
 });
 
 // Mostrar contrasenia
 $look.addEventListener("click", () => {
-  if ($password.type === "password") $password.type = "text";
-  else $password.type = "password";
+  $pass.type = ($pass.type === "password") ? "text" : "password";
 });
 
-function checkFields(user, password) {
+function checkFields(user, pass) {
   let flag = true;
   
   // [password] 
-  if (!/^.{8,12}$/.test(password)) { // Menos de 8 o mas de 12 caracteres
+  if (!/^.{8,12}$/.test(pass)) { // Menos de 8 o mas de 12 caracteres
     $passHelp.style.display = `block`;
     $passHelp.innerHTML = `La contraseña debe contener entre 8 y 12 caracteres`;
     
     flag = false;
   }
-  else if (!/^[A-Za-z0-9]+$/.test(password)) { // Caracteres que no sean letras o numeros
+  else if (!/^[A-Za-z0-9]+$/.test(pass)) { // Caracteres que no sean letras o numeros
     $passHelp.style.display = `block`;
     $passHelp.innerHTML = `Solo se permiten letras y numeros`;
     
@@ -61,7 +57,7 @@ function checkFields(user, password) {
 }
 
 // EN ESTE PUNTO CORRESPONDE LA CORROBORACION DEL TOKEN
-function checkUser(user, password) {
-  if (user === `ignaciot` && password === `12345678`) $error.style.display = `none`;
+function checkUser(user, pass) {
+  if (user === `ignaciot` && pass === `12345678`) $error.style.display = `none`;
   else $error.style.display = `block`;
 }

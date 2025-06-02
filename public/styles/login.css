@@ -1,13 +1,14 @@
 .login {
   display: flex;
   flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.7);
   justify-content: center;
-  align-items: center;
-  width: 260px;
-  height: auto;
   border-radius: 20px;
   margin-bottom: 100px;
-  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  position: absolute;
+  height: auto;
+  width: 260px;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -15,41 +16,43 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 30px;
-  margin: 15px;
-  padding: 15px;
   font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  padding: 15px;
+  margin: 15px;
+  gap: 30px;
 }
 
-.btn input {
-  width: 100px;
-  height: 35px;
-  font-size: 14pt;
-  border: none;
-  border-radius: 20px;
+button {
   background-color: rgba(255, 230, 0, 0.4);
+  border-radius: 20px;
+  transition: all 1s;
+  border: none;
+  height: 35px;
+  width: 100px;
   color: rgba(255, 255, 255, 0.7);
 }
-.btn input:hover {
+button:hover {
   background-color: rgba(255, 230, 0, 0.7);
+  border-radius: 20px;
+  transition: all 1s;
   color: rgba(255, 255, 255, 0.9);
 }
 
 #look {
-  padding: 0px;
   margin-top: 5px;
+  padding: 0px;
 }
 
 .error {
-  display: none;
   color: rgb(255, 0, 0);
-  text-align: center;
+  display: none;
   font-size: 12pt;
+  text-align: center;
 }
 
 .ayuda {
-  display: none;
   color: rgb(255, 230, 0);
+  display: none;
   font-size: 10pt;
 }

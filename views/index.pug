@@ -1,6 +1,6 @@
 extends layout
 
-block main 
+block left_main
   .login 
     form()
       //- Nombre de Usuario
@@ -16,6 +16,6 @@ block main
           input(type="checkbox" name="" value="" id="look")
         span(id="passHelp").ayuda
       //- Boton Enviar
-      .btn
-        input(type="submit")
+      .buttons
+        button Enviar
       span.error Error: Nombre de usuario y/o contraseña incorrecta.
