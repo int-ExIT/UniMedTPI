@@ -1,19 +1,7 @@
-const CONTROLLER = require("../controls/patient.controler");
+const CONTROLLER = require("../controls/admission.controler");
 const router = require("express").Router();
 
 // --------------------------------------------- RENDER Patient ---
-router.get("/", (req, res) => {
-  res.status(200).render("patient", {
-    title: "UniMed-Reception",
-    scripts: [
-      "../public/scripts/patient/patient.js",
-      "../public/scripts/dataCollector.js",
-    ],
-    styles: [
-      "../public/styles/patient.css",
-    ],
-  });
-}); // ACHICAR ESTE METODO
 
 // ----------------------------------------------- CRUD Patient ---
 router.post("/new", CONTROLLER.insert);

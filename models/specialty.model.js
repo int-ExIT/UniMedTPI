@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Specialty = sequelize.define("Specialty", {
-    user_id: {
+    user_dni: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   // --------------------------------------- DEFINE ASSOCIATION ---
   Specialty.associate = models => {
     Specialty.belongsTo(models.User, {
-      foreignKey: "user_id",
+      foreignKey: "user_dni",
       as: "user",
       onDelete: "CASCADE",
       onUpdate: "CASCADE",

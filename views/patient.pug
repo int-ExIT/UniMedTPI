@@ -3,8 +3,9 @@ extends layout
 block header
   .search_patient
     label(for="search") Busqueda 
-    input(type="text" id="search" autocomplete="off" spellcheck="false" value="" placeholder="Ingrese DNI" autofocus)
-    button(id="register") 
+    input(type="text" id="search" autocomplete="off" spellcheck="false" value="" placeholder="Ingrese DNI" maxlength="8")
+    //- ELIMINAR
+    button(id="tester") tester 
 block left_main
   #l_main.left_main 
     include ./components/admission.register.pug 

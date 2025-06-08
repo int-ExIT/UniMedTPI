@@ -1,9 +1,7 @@
 // Import ES6 para el reconocimiento del front-end
 import queryFetch from './fetch.js';
-// Almaceno TODOS los elementos del tipo form en un Array
-const $forms = Array.from(document.querySelectorAll("form"));
-// Asigno a cada formulario la funcion recolectora
-for (let $form of $forms) {
+
+document.querySelectorAll("form").forEach($form => {
   $form.addEventListener("submit", async evt => {
     // Prevengo que el formulario recargue la pagina
     evt.preventDefault();
@@ -14,8 +12,10 @@ for (let $form of $forms) {
       Array.from(formData).filter(value => value[1] !== "")
     );
     
-    // try { await queryFetch("http://localhost:8000/patient/8", "DELETE", body); }
-    try { await queryFetch($form.action, $form.method, body); }
+    console.log(`This is body ---> ${JSON.stringify(body)}`);
+    console.log(`This is action ---> ${$form.action}`);
+    console.log(`This is method ---> ${$form.name}`);
+    try { await queryFetch($form.action, $form.name, body); }
     catch (err) { console.error(`Fetch ${err}`) }
   });
-}
+});

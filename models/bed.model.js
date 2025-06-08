@@ -1,18 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
   const Bed = sequelize.define("Bed", {
-    id: {
-      type: DataTypes.INTEGER,
+    room_number: {
+      type: DataTypes.INTEGER(4),
       primaryKey: true,
-      autoIncrement: true,
       allowNull: false,
       unique: true,
     },
-    ala: {
-      type: DataTypes.ENUM("norte", "sur", "este", "oeste"),
+    tipo_habitacion: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    numero_habitacion: {
-      type: DataTypes.INTEGER(3),
+    ala: {
+      type: DataTypes.ENUM("norte", "sur", "este", "oeste"),
       allowNull: false,
     },
     capacidad: {
@@ -27,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ENUM("limpia", "por limpiar"),
       allowNull: false,
     },
-    restrict_genero: {
+    restriccion_genero: {
       type: DataTypes.ENUM("hombre", "mujer", "none"),
       allowNull: false,
       defaultValue: "none",
@@ -44,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
   // --------------------------------------- DEFINE ASSOCIATION ---
   Bed.associate = models => {
     Bed.hasOne(models.Admission, {
-      foreignKey: "bed_id",
+      foreignKey: "room_number",
       as: "admission",
       onDelete: "CASCADE",
       onUpdate: "CASCADE",

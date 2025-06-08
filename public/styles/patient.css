@@ -8,15 +8,16 @@ form {
 }
 
 .search_patient {
-  display: flex;
-  gap: 10px;
   color: rgba(255, 255, 255, 1);
-  padding: 0px 40px;
+  gap: 10px;
+  width: 100%;
+  display: flex;
   font-size: 17pt;
   align-items: center;
   justify-content: center;
 }
 .search_patient input {
+  color: inherit;
   width: 125px;
   outline: none;
   text-align: center;
@@ -59,7 +60,7 @@ button {
   background-color: rgba(0, 26, 255, 0.8);
   border-radius: 20px;
   transition: all 0.5s;
-  margin-top: 30px;
+  margin-top: 10px;
   border: none;
   height: 35px;
   width: 200px;

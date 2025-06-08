@@ -20,24 +20,39 @@
   background-color: rgb(21, 25, 29);
   border-radius: 5px;
   transition: width 1s;
+  overflow: auto;
   position: absolute;
   padding: 5px;
   border: solid;
   height: 95%;
   width: 98%;
 }
+.main_center::-webkit-scrollbar {
+  background-color: transparent;
+  width: 12px;
+  height: 20px;
+}
+.main_center::-webkit-scrollbar-track {
+  background-color: rgba(21, 25, 29, 0.63);
+}
+.main_center::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+}
 .right_shift {
   transition: width 1s;
+  overflow: hidden;
   width: 82%;
 }
 .left_shift {
   transition: width 1s;
+  overflow: hidden;
   width: 66%;
 }
 
 /* Admission Register */
 .left_main {
-  display: flex;
+  display: none;
   overflow: hidden;
   transition: opacity 1s;
   flex-direction: column;
@@ -49,6 +64,7 @@
   width: 18%;
   left: 5px;
 }
+
 .look_left {
   transition: opacity 1s;
   opacity: 1;
@@ -56,7 +72,7 @@
 
 /* Patient Register */
 .main_right {
-  display: flex;
+  display: none;
   overflow: hidden;
   transition: opacity 1s;
   flex-direction: column;
@@ -68,6 +84,7 @@
   width: 34%;
   right: 5px;
 }
+
 .look_right {
   transition: opacity 1s;
   opacity: 1;
@@ -77,17 +94,51 @@ td button {
   width: auto;
   height: auto;
   padding: 2px 10px;
+  transition: opacity 1s;
+  opacity: 1;
   margin: 0px;
 }
+
 td .update {
-  background-color: rgba(17, 155, 17, 0.7);
+  background-color: rgba(17, 155, 17, 0.5);
 }
+
 td .update:hover {
   background-color: rgba(17, 155, 17, 1);
 }
+
 td .delete {
-  background-color: rgba(155, 33, 17, 0.7);
+  background-color: rgba(155, 33, 17, 0.5);
 }
+
 td .delete:hover {
   background-color: rgba(155, 33, 17, 1);
+}
+
+td .cancel {
+  background-color: rgba(255, 230, 0, 0.5);
+}
+
+td .cancel:hover {
+  background-color: rgba(255, 230, 0, 0.8);
+}
+
+.hidden_button {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 2s;
+}
+
+tbody .tr {
+  opacity: 0.2 !important;
+}
+
+tbody .tr:hover {
+  opacity: 0.8 !important;
+  transition: opacity 0.5s !important;
+}
+
+.hidden_tr {
+  opacity: 0 !important;
+  transition: opacity 1s !important;
 }

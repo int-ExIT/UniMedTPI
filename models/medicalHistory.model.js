@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Medical_History = sequelize.define("Medical_History", {
-    patient_id: {
+    patient_dni: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
@@ -86,12 +86,16 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false,
       allowNull: false,
     },
-  }, {});
+  }, {
+    timestamps: true,
+    createdAt: 'fecha_creacion',
+    updatedAt: 'fecha_actualizacion',
+  });
 
   // --------------------------------------- DEFINE ASSOCIATION ---
   Medical_History.associate = models => {
     Medical_History.belongsTo(models.Patient, {
-      foreignKey: "patient_id",
+      foreignKey: "patient_dni",
       as: "patient",
       onDelete: "CASCADE",
       onUpdate: "CASCADE",

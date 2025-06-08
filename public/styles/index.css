@@ -8,7 +8,7 @@ body {
   /* Establecer Imag. Como Fondo */
   background-image: linear-gradient(0deg,
       rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)), url(../images/ramon_carrillo.jpg);
+      rgba(0, 0, 0, 0.4)), url(../images/ramon_carrillo_light.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -87,14 +87,16 @@ select {
 }
 textarea {
   width: 200px;
-  height: 150px;
+  height: 100px;
 }
 
 .buttons {
   display: flex;
+  flex-direction: column;
   font-size: 14pt;
-  justify-content: center;
-  align-items: end;
+  justify-content: end;
+  /* align-items: end; */
+  gap: 5px;
   height: 100%;
 }
 

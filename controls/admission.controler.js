@@ -1,13 +1,15 @@
-const { Patient: MODEL } = require("../models/index.model");
+const { Admission: MODEL } = require("../models/index.model");
 const { Op } = require("sequelize");
+
+// AGREGAR LA OPCION DE BUSCAR YA SEA POR EL DNI DEL PACIENTE O EL DEL USUARIO...
 
 async function insert(req, res) {
   try {
-    const patient = await MODEL.create(req.body);
+    const element = await MODEL.create(req.body);
 
     res.status(201).json({
       message: `(${MODEL.name}) Successful Insertion`,
-      body: patient,
+      body: element,
     });
   }
   catch (err) {
@@ -27,13 +29,13 @@ async function insert(req, res) {
 
 async function selectOne(req, res) {
   try {
-    const patient = await MODEL.findOne({
-      where: { dni: req.params.dni }
+    const element = await MODEL.findOne({
+      where: { patient_dni: req.params.patient_dni }
     });
 
     res.status(200).json({
       message: `(${MODEL.name}) Successful Selection`,
-      body: patient,
+      body: element,
     });
   }
   catch (err) {
@@ -45,20 +47,20 @@ async function selectOne(req, res) {
 
 async function selectAll(req, res) {
   try {
-    let patients;
+    let elements;
     
-    if (req.params.dni) patients = await MODEL.findAll({
+    if (req.params.patient_dni) elements = await MODEL.findAll({
       where: {
-        dni: {
-          [Op.like]: `${req.params.dni}%`
+        patient_dni: {
+          [Op.like]: `${req.params.patient_dni}%`
         }
       }
     });
-    else patients = await MODEL.findAll();
+    else elements = await MODEL.findAll();
 
     res.status(200).json({
       message: `(${MODEL.name}) Successful All Selections`,
-      body: patients,
+      body: elements,
     });
   }
   catch (err) {
@@ -71,7 +73,7 @@ async function selectAll(req, res) {
 async function update(req, res) {
   try {
     const affectedRows = await MODEL.update(req.body, {
-      where: { dni: req.params.dni }
+      where: { patient_dni: req.params.patient_dni }
     });
 
     res.status(200).json({
@@ -89,7 +91,7 @@ async function update(req, res) {
 async function remove(req, res) {
   try {
     const affectedRows = await MODEL.destroy({
-      where: { dni: req.params.dni }
+      where: { patient_dni: req.params.patient_dni }
     });
 
     res.status(200).json({

@@ -1,26 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
-      autoIncrement: true,
-      unique: true,
-    },
-    nombres: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
-    },
-    apellidos: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
-    },
     dni: {
       type: DataTypes.INTEGER(8),
+      primaryKey: true,
       allowNull: false,
       unique: true,
     },
-    numero_cel: {
+    nombre: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    apellido: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    contacto: {
       type: DataTypes.INTEGER(12),
       allowNull: false,
       unique: true,
@@ -50,7 +44,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ENUM("mañana", "tarde", "noche"),
       allowNull: false,
     },
-  }, {}); // El tercer parametro del metodo '.define()' sirve para controlar los comportamientos de la tabla
+  }, {
+    timestamps: true,
+    createdAt: 'fecha_creacion',
+    updatedAt: 'fecha_actualizacion',
+  }); // El tercer parametro del metodo '.define()' sirve para controlar los comportamientos de la tabla
 
   // --------------------------------------- DEFINE ASSOCIATION ---
   User.associate = models => {
@@ -59,14 +57,14 @@ module.exports = (sequelize, DataTypes) => {
      * en el modelo debil
      */
     User.hasOne(models.Login, {
-      foreignKey: "user_id",
+      foreignKey: "user_dni",
       as: "login",
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
-
+    
     User.hasOne(models.Specialty, {
-      foreignKey: "user_id",
+      foreignKey: "user_dni",
       as: "specialty",
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
@@ -79,13 +77,13 @@ module.exports = (sequelize, DataTypes) => {
     */
     User.belongsToMany(models.Patient, {
       through: models.Admission,
-      foreignKey: "user_id",
+      foreignKey: "user_dni",
       as: "admission",
     });
-
+    
     User.belongsToMany(models.Patient, {
       through: models.Study,
-      foreignKey: "user_id",
+      foreignKey: "user_dni",
       as: "study",
     });
   };

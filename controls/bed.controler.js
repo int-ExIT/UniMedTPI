@@ -1,13 +1,13 @@
-const { Patient: MODEL } = require("../models/index.model");
+const { Bed: MODEL } = require("../models/index.model");
 const { Op } = require("sequelize");
 
 async function insert(req, res) {
   try {
-    const patient = await MODEL.create(req.body);
+    const element = await MODEL.create(req.body);
 
     res.status(201).json({
       message: `(${MODEL.name}) Successful Insertion`,
-      body: patient,
+      body: element,
     });
   }
   catch (err) {
@@ -27,13 +27,13 @@ async function insert(req, res) {
 
 async function selectOne(req, res) {
   try {
-    const patient = await MODEL.findOne({
-      where: { dni: req.params.dni }
+    const element = await MODEL.findOne({
+      where: { room_number: req.params.room_number }
     });
 
     res.status(200).json({
       message: `(${MODEL.name}) Successful Selection`,
-      body: patient,
+      body: element,
     });
   }
   catch (err) {
@@ -45,20 +45,20 @@ async function selectOne(req, res) {
 
 async function selectAll(req, res) {
   try {
-    let patients;
+    let elements;
     
-    if (req.params.dni) patients = await MODEL.findAll({
+    if (req.params.tipo_habitacion) elements = await MODEL.findAll({
       where: {
-        dni: {
-          [Op.like]: `${req.params.dni}%`
+        tipo_habitacion: {
+          [Op.like]: `${req.params.tipo_habitacion}%`
         }
       }
     });
-    else patients = await MODEL.findAll();
+    else elements = await MODEL.findAll();
 
     res.status(200).json({
       message: `(${MODEL.name}) Successful All Selections`,
-      body: patients,
+      body: elements,
     });
   }
   catch (err) {
@@ -71,7 +71,7 @@ async function selectAll(req, res) {
 async function update(req, res) {
   try {
     const affectedRows = await MODEL.update(req.body, {
-      where: { dni: req.params.dni }
+      where: { room_number: req.params.room_number }
     });
 
     res.status(200).json({
@@ -89,7 +89,7 @@ async function update(req, res) {
 async function remove(req, res) {
   try {
     const affectedRows = await MODEL.destroy({
-      where: { dni: req.params.dni }
+      where: { room_number: req.params.room_number }
     });
 
     res.status(200).json({

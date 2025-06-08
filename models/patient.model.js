@@ -1,26 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
   const Patient = sequelize.define("Patient", {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
-      autoIncrement: true,
-      unique: true,
-    },
-    nombres: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
-    },
-    apellidos: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
-    },
     dni: {
       type: DataTypes.INTEGER(8),
+      primaryKey: true,
       allowNull: false,
       unique: true,
     },
-    numero_cel: {
+    nombre: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    apellido: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    contacto: {
       type: DataTypes.INTEGER(12),
       allowNull: false,
       unique: true,
@@ -58,18 +52,21 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {
+    timestamps: true,
+    createdAt: 'fecha_creacion',
+    updatedAt: 'fecha_actualizacion',
     indexes: [
       {
         unique: true,
-        fields: ["dni", "id"],
+        fields: ["dni"],
       }
-    ]
+    ],
   });
 
   // --------------------------------------- DEFINE ASSOCIATION ---
   Patient.associate = models => {
     Patient.hasOne(models.Medical_History, {
-      foreignKey: "patient_id",
+      foreignKey: "patient_dni",
       as: "medical history",
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
@@ -77,13 +74,13 @@ module.exports = (sequelize, DataTypes) => {
 
     Patient.belongsToMany(models.User, {
       through: models.Admission,
-      foreignKey: "patient_id",
+      foreignKey: "patient_dni",
       as: "admission"
     });
   
     Patient.belongsToMany(models.User, {
       through: models.Study,
-      foreignKey: "patient_id",
+      foreignKey: "patient_dni",
       as: "study",
     });
   };

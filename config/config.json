@@ -1,0 +1,11 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "uni_med",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {},
+  "production": {}
+}

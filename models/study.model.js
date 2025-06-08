@@ -1,28 +1,28 @@
 module.exports = (sequelize, DataTypes) => {
   const Study = sequelize.define("Study", {
-    user_id: {
+    user_dni: {
       type: DataTypes.INTEGER,
       allowNull: false,
       unique: true,
     },
-    patient_id: {
+    patient_dni: {
       type: DataTypes.INTEGER,
       allowNull: false,
       unique: true,
     },
-    study_type: {
-      type: DataTypes.ENUM("revicion", "estudio"),
+    tipo_estudio: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     resultado: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    fecha_registro: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-  }, {});
+  }, {
+    timestamps: true,
+    createdAt: 'fecha_creacion',
+    updatedAt: 'fecha_actualizacion',
+  });
 
   return Study;
 };

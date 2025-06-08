@@ -36,7 +36,10 @@ async function loadTables(force) {
   }
   catch (err) { console.error(`Error Loading Tables: ${err}`); }
 }
+// loadTables(true);
 
 module.exports = {
   Patient,
+  Admission,
+  Bed,
 };

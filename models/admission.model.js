@@ -1,17 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
   const Admission = sequelize.define("Admission", {
-    user_id: {
+    user_dni: {
       type: DataTypes.INTEGER,
       allowNull: false,
       unique: true,
     },
-    patient_id: {
+    patient_dni: {
       type: DataTypes.INTEGER,
       allowNull: false,
       unique: true,
     },
-    bed_id: {
-      type: DataTypes.INTEGER,
+    room_number: {
+      type: DataTypes.INTEGER(4),
       allowNull: false,
       unique: true,
     },
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Admission.associate = models => {
     Admission.belongsTo(models.Bed, {
-      foreignKey: "bed_id",
+      foreignKey: "room_number",
       as: "bed",
       onDelete: "CASCADE",
       onUpdate: "CASCADE",

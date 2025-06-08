@@ -1,24 +1,47 @@
-form(action="http://localhost:8000/admission/new" method="POST")
+h2(style="margin: 0px 0px 0px 15px;") Registrar Admision
+form(action="http://localhost:8000/admission/new" name="POST")
   .register
+    //- DNI-User
+    .input(style="display: none;") 
+      label(for="user_dni") DNI Usuario 
+      input(type="text" id="user_dni" name="user_dni" autocomplete="off" spellcheck="false" value="12876123")
     //- DNI
-    .input 
+    .input(style="display: none;") 
       label(for="patient_dni") DNI 
-      input(type="text" id="patient_dni" autocomplete="off" spellcheck="false" value="41682078" placeholder="Ingrese DNI" autofocus)
-    //- Bed
+      input(type="text" id="patient_dni" name="patient_dni" autocomplete="off" spellcheck="false" value="" placeholder="Ingrese DNI" autofocus)
+    //- Category
     .input 
-      label(for="bed_id") Habitacion 
-      input(type="text" id="bed_id" autocomplete="off" spellcheck="false" value="H1" placeholder="Ingrese Habitacion")
+      label(for="tipo_habitacion") Categoria 
+      select(id="tipo_habitacion" name="tipo_habitacion")
+        option(value="Consulta General") Consulta General
+        option(value="Consulta Especializada") Consulta Especializada
+        option(value="Habitacion de Hospitalizacion") Hospitalizacion    
+        option(value="Urgencia") Urgencia    
+        option(value="Cuidados Intensivos") Cuidados Intensivos    
+        option(value="Pediatria") Pediatria    
+        option(value="Rehabilitacion") Rehabilitacion    
+        option(value="Salud Mental") Salud Mental    
+        option(value="Quirofano") Quirofano    
+        option(value="Pros. Ambulatorios") Pros. Ambulatorios    
+        option(value="Radiologia") Radiologia    
+        option(value="Laboratorio") Laboratorio    
+        option(value="Reanimacion") Reanimacion    
+        option(value="Endoscopia") Endoscopia    
+    //- Room Number
+    .input 
+      label(for="room_number") Numero de Habitacion 
+      select(id="room_number" name="room_number")
     //- Motive
     .input 
       label(for="motivo") Motivo
-      select(id="motivo") 
+      select(id="motivo" name="motivo") 
         option(value="Cita Medica") Cita Medica
         option(value="Derivacion") Derivacion
         option(value="Urgencia") Urgencia
     //- Symptoms
     .input 
       label(for="sintomas") Sintomas 
-      textarea(id="sintomas")
+      textarea(id="sintomas" name="sintomas")
     //- Boton Enviar
     .buttons
-      button Registrar 
+      button.send Registrar 
