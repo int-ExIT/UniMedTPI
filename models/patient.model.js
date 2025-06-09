@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Patient = sequelize.define("Patient", {
     dni: {
-      type: DataTypes.INTEGER(8),
+      type: DataTypes.INTEGER(10),
       primaryKey: true,
       allowNull: false,
       unique: true,
@@ -17,10 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     contacto: {
       type: DataTypes.INTEGER(12),
       allowNull: false,
-      unique: true,
     },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false,
       unique: true,
       validate: {
@@ -28,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     direccion: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
     estado_civil: {

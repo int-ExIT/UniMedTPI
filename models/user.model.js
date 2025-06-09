@@ -17,10 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     contacto: {
       type: DataTypes.INTEGER(12),
       allowNull: false,
-      unique: true,
     },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false,
       unique: true,
       // Sequelize tiene su propio validador de emails

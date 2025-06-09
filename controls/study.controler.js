@@ -1,7 +1,5 @@
-const { Admission: MODEL } = require("../models/index.model");
+const { Study: MODEL } = require("../models/index.model");
 const { Op } = require("sequelize");
-
-// AGREGAR LA OPCION DE BUSCAR YA SEA POR EL DNI DEL PACIENTE O EL DEL USUARIO...
 
 async function insert(req, res) {
   try {
@@ -108,8 +106,8 @@ async function remove(req, res) {
 
 module.exports = {
   insert,
-  update,
-  remove,
   selectOne,
   selectAll,
+  update,
+  remove,
 };

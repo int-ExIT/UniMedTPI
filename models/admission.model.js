@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     room_number: {
       type: DataTypes.INTEGER(4),
       allowNull: false,
-      unique: true,
+      unique: false,
     },
     motivo: {
       type: DataTypes.STRING,

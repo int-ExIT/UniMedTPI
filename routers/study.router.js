@@ -1,4 +1,4 @@
-const CONTROLLER = require("../controls/admission.controler");
+const CONTROLLER = require("../controls/study.controler");
 const router = require("express").Router();
 
 // --------------------------------------------- RENDER Patient ---
