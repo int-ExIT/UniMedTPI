@@ -16,11 +16,13 @@ form(action="http://localhost:8000/patient/new" name="POST")
     //- Fecha de Nacimiento
     .input 
       label(for="fecha_nacimiento") Fecha de Nacimiento 
-      input(type="text" id="fecha_nacimiento" name="fecha_nacimiento" autocomplete="off" spellcheck="false" value="")
+      input(type="text" id="fecha_nacimiento" name="fecha_nacimiento" autocomplete="off" spellcheck="false" maxlength="10" value="")
     //- Sexo
     .input 
       label(for="sexo") Sexo 
-      input(type="text" id="sexo" name="sexo" autocomplete="off" spellcheck="false" value="")
+      select(id="sexo" name="sexo") 
+        option(value="hombre") Hombre
+        option(value="mujer") Mujer
     //- Edad
     .input 
       label(for="edad") Edad 
@@ -33,7 +35,11 @@ form(action="http://localhost:8000/patient/new" name="POST")
     //- Estado Civil
     .input 
       label(for="estado_civil") Estado Civil 
-      input(type="text" id="estado_civil" name="estado_civil" autocomplete="off" spellcheck="false" value="")
+      select(id="estado_civil" name="estado_civil") 
+        option(value="soltero") Soltero
+        option(value="casado") Casado
+        option(value="divorciado") Divorciado
+        option(value="viudo") Viudo
     //- Contacto
     .input 
       label(for="contacto") Contacto 

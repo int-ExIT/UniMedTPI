@@ -28,7 +28,7 @@ async function insert(req, res) {
 async function selectOne(req, res) {
   try {
     const patient = await MODEL.findOne({
-      where: { dni: req.params.dni }
+      where: { dni: req.params.dni },
     });
 
     res.status(200).json({
@@ -46,7 +46,7 @@ async function selectOne(req, res) {
 async function selectAll(req, res) {
   try {
     let patients;
-    
+
     if (req.params.dni) patients = await MODEL.findAll({
       where: {
         dni: {

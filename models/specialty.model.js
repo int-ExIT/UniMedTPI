@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Specialty = sequelize.define("Specialty", {
     user_dni: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(8),
       primaryKey: true,
       allowNull: false,
       unique: true,

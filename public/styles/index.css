@@ -95,7 +95,6 @@ textarea {
   flex-direction: column;
   font-size: 14pt;
   justify-content: end;
-  /* align-items: end; */
   gap: 5px;
   height: 100%;
 }

@@ -27,23 +27,28 @@
   height: 95%;
   width: 98%;
 }
+
 .main_center::-webkit-scrollbar {
   background-color: transparent;
   width: 12px;
   height: 20px;
 }
+
 .main_center::-webkit-scrollbar-track {
   background-color: rgba(21, 25, 29, 0.63);
 }
+
 .main_center::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 20px;
 }
+
 .right_shift {
   transition: width 1s;
   overflow: hidden;
   width: 82%;
 }
+
 .left_shift {
   transition: width 1s;
   overflow: hidden;
@@ -141,4 +146,26 @@ tbody .tr:hover {
 .hidden_tr {
   opacity: 0 !important;
   transition: opacity 1s !important;
+}
+
+thead {
+  position: sticky !important;
+  top: -5px;
+}
+
+tfoot {
+  background-color: rgb(21, 25, 29);
+  box-sizing: border-box;
+  font-size: 14pt;
+  position: sticky;
+  bottom: -10px;
+
+  label {
+    padding: 0px 10px;
+  }
+
+  input {
+    height: auto;
+    width: auto;
+  }
 }

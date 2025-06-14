@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
-    
+
     User.hasOne(models.Specialty, {
       foreignKey: "user_dni",
       as: "specialty",
@@ -74,16 +74,20 @@ module.exports = (sequelize, DataTypes) => {
      * 
      * No es necesario agregar ningun associate en la tabla intermediaria ('through:')
     */
-    User.belongsToMany(models.Patient, {
-      through: models.Admission,
+    User.hasMany(models.Admission, {
       foreignKey: "user_dni",
-      as: "admission",
+      as: "user_admission",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+
     });
-    
-    User.belongsToMany(models.Patient, {
-      through: models.Study,
+
+    User.hasMany(models.Study, {
       foreignKey: "user_dni",
-      as: "study",
+      as: "user_study",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+
     });
   };
 

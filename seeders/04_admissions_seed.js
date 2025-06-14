@@ -5,9 +5,9 @@ module.exports = {
       {
         user_dni: 20000001, // recepcionista mañana
         patient_dni: 10123123, // hombre
-        room_number: 201, // hospitalización
+        room_number: 602, // rehabilitacion
         motivo: "cita medica",
-        sintomas: "dolor de cabeza, fiebre",
+        sintomas: "procedimentos postquirurjicos",
         ingreso: new Date(2025, 6, 2, 9, 0),
         egreso: null,
       },
@@ -23,7 +23,7 @@ module.exports = {
       {
         user_dni: 20000003, // recepcionista noche
         patient_dni: 13123123, // hombre
-        room_number: 203, // urgencias
+        room_number: 203, // hospitalización
         motivo: "urgencia",
         sintomas: "dolor en el pecho",
         ingreso: new Date(2025, 6, 2, 11, 0),
@@ -32,18 +32,18 @@ module.exports = {
       {
         user_dni: 20000004,
         patient_dni: 14123123, // mujer
-        room_number: 204, // hospitalización
+        room_number: 601, // rehabilitacion
         motivo: "cita medica",
-        sintomas: "migranas frecuentes",
+        sintomas: "tratamiento de rotula",
         ingreso: new Date(2025, 6, 2, 9, 30),
         egreso: null,
       },
       {
         user_dni: 20000005,
         patient_dni: 15123123, // hombre
-        room_number: 205, // hospitalización
+        room_number: 702, // salud mental
         motivo: "derivacion",
-        sintomas: "dolor abdominal",
+        sintomas: "perdida de memoria severa",
         ingreso: new Date(2025, 6, 2, 10, 15),
         egreso: null,
       },
@@ -77,7 +77,7 @@ module.exports = {
       {
         user_dni: 20000009,
         patient_dni: 19123123, // hombre
-        room_number: 209, // urgencias
+        room_number: 209, // hospitalización
         motivo: "urgencia",
         sintomas: "lesión en la pierna",
         ingreso: new Date(2025, 6, 2, 11, 30),
@@ -104,7 +104,7 @@ module.exports = {
       {
         user_dni: 20000012,
         patient_dni: 22123123, // mujer
-        room_number: 212, // urgencias
+        room_number: 212, // hospitalización
         motivo: "urgencia",
         sintomas: "fiebre y dolor de garganta",
         ingreso: new Date(2025, 6, 2, 12, 15),
@@ -131,7 +131,7 @@ module.exports = {
       {
         user_dni: 20000015,
         patient_dni: 25123123, // hombre
-        room_number: 215, // urgencias
+        room_number: 215, // hospitalización
         motivo: "urgencia",
         sintomas: "dolor en el pecho",
         ingreso: new Date(2025, 6, 2, 11, 0),
@@ -162,15 +162,6 @@ module.exports = {
         motivo: "urgencia",
         sintomas: "dificultad para respirar",
         ingreso: new Date(2025, 6, 2, 11, 15),
-        egreso: null,
-      },
-      {
-        user_dni: 20000019,
-        patient_dni: 29123123, // hombre
-        room_number: 219, // hospitalización
-        motivo: "cita medica",
-        sintomas: "fatiga extrema",
-        ingreso: new Date(2025, 6, 2, 9, 15),
         egreso: null,
       },
       {
@@ -206,15 +197,6 @@ module.exports = {
         room_number: 303, // urgencias
         motivo: "urgencia",
         sintomas: "sangrado nasal, mareos",
-        ingreso: new Date(2025, 6, 2, 9, 0),
-        egreso: null,
-      },
-      {
-        user_dni: 20000005, // recepcionista tarde
-        patient_dni: 34123123, // mujer
-        room_number: 304, // urgencias
-        motivo: "cita medica",
-        sintomas: "dolor abdominal, náuseas",
         ingreso: new Date(2025, 6, 2, 9, 0),
         egreso: null,
       },
@@ -300,15 +282,6 @@ module.exports = {
         egreso: null,
       },
       {
-        user_dni: 20000015, // recepcionista noche
-        patient_dni: 10752241, // hombre
-        room_number: 219, // hospitalización
-        motivo: "derivacion",
-        sintomas: "dolor en el pecho, dificultad para respirar",
-        ingreso: new Date(2025, 6, 2, 9, 0),
-        egreso: null,
-      },
-      {
         user_dni: 20000016, // recepcionista mañana
         patient_dni: 10752242, // mujer
         room_number: 401, // cuidados intensivos
@@ -335,6 +308,34 @@ module.exports = {
         ingreso: new Date(2025, 6, 2, 9, 0),
         egreso: null,
       },
+      {
+        user_dni: 20000005, // recepcionista tarde
+        patient_dni: 34123123, // mujer
+        room_number: 405, // cuidados intensivos
+        motivo: "cita medica",
+        sintomas: "dolor abdominal, náuseas",
+        ingreso: new Date(2025, 6, 2, 9, 0),
+        egreso: null,
+      },
+      {
+        user_dni: 20000015, // recepcionista noche
+        patient_dni: 10752241, // hombre
+        room_number: 407, // cuidados intensivos
+        motivo: "derivacion",
+        sintomas: "dolor en el pecho, dificultad para respirar",
+        ingreso: new Date(2025, 6, 2, 9, 0),
+        egreso: null,
+      },
+      {
+        user_dni: 20000019,
+        patient_dni: 29123123, // hombre
+        room_number: 408, //cuidados intensivos
+        motivo: "cita medica",
+        sintomas: "fatiga extrema",
+        ingreso: new Date(2025, 6, 2, 9, 15),
+        egreso: null,
+      },
+
       // Pacientes que ya recibieron el alta
       {
         user_dni: 20000001, // recepcionista mañana

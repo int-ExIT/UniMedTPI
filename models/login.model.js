@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Login = sequelize.define("Login", {
     user_dni: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(8),
       allowNull: false,
       unique: true,
     },

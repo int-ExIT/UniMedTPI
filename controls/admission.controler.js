@@ -1,4 +1,9 @@
-const { Admission: MODEL } = require("../models/index.model");
+const {
+  Admission: MODEL,
+  Patient,
+  Study,
+  Bed
+} = require("../models/index.model");
 const { Op } = require("sequelize");
 
 // AGREGAR LA OPCION DE BUSCAR YA SEA POR EL DNI DEL PACIENTE O EL DEL USUARIO...
@@ -30,7 +35,23 @@ async function insert(req, res) {
 async function selectOne(req, res) {
   try {
     const element = await MODEL.findOne({
-      where: { patient_dni: req.params.patient_dni }
+      attributes: ["egreso"],
+      include: [{
+        model: Patient,
+        as: "patient_admission",
+        attributes: [
+          "dni", "nombre", "apellido",
+          "contacto", "email", "direccion",
+          "estado_civil", "sexo", "edad",
+          "contacto_particular", "fecha_nacimiento"
+        ],
+        include: [{
+          model: Study,
+          as: "patient_study",
+          attributes: ["triage"],
+        }]
+      }],
+      where: { patient_dni: req.params.patient_dni },
     });
 
     res.status(200).json({
@@ -47,16 +68,40 @@ async function selectOne(req, res) {
 
 async function selectAll(req, res) {
   try {
-    let elements;
-    
-    if (req.params.patient_dni) elements = await MODEL.findAll({
-      where: {
-        patient_dni: {
-          [Op.like]: `${req.params.patient_dni}%`
+    const getAll = req.params.patient_dni === `undefined`;
+    const filter = req.params.filter === `not`;
+
+    const CONDITION_DNI = (getAll) ? { [Op.not]: null } : { [Op.like]: `${req.params.patient_dni}%` };
+    const CONDITION_EGRESS = (filter) ? { [Op.not]: null } : { [Op.is]: null };
+
+    const elements = await MODEL.findAll({
+      attributes: ["room_number", "ingreso", "egreso"],
+      include: [
+        {
+          model: Bed,
+          as: "bed",
+          attributes: ["tipo_habitacion"]
+        },
+        {
+          model: Patient,
+          as: "patient_admission",
+          attributes: [
+            "dni", "nombre", "apellido", "contacto", 
+            "email", "direccion", "estado_civil", 
+            "sexo", "edad", "contacto_particular", 
+            "fecha_nacimiento"
+          ],
+          include: [{
+            model: Study,
+            as: "patient_study",
+            attributes: ["triage"],
+          }]
         }
+      ], where: {
+        patient_dni: CONDITION_DNI,
+        egreso: CONDITION_EGRESS
       }
     });
-    else elements = await MODEL.findAll();
 
     res.status(200).json({
       message: `(${MODEL.name}) Successful All Selections`,

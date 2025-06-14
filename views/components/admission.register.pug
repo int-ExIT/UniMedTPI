@@ -4,7 +4,7 @@ form(action="http://localhost:8000/admission/new" name="POST")
     //- DNI-User
     .input(style="display: none;") 
       label(for="user_dni") DNI Usuario 
-      input(type="text" id="user_dni" name="user_dni" autocomplete="off" spellcheck="false" value="12876123")
+      input(type="text" id="user_dni" name="user_dni" autocomplete="off" spellcheck="false" value="20000001")
     //- DNI
     .input(style="display: none;") 
       label(for="patient_dni") DNI 
@@ -23,7 +23,7 @@ form(action="http://localhost:8000/admission/new" name="POST")
         option(value="Salud Mental") Salud Mental    
         option(value="Quirofano") Quirofano    
         option(value="Pros. Ambulatorios") Pros. Ambulatorios    
-        option(value="Radiologia") Radiologia    
+        option(value="Radiologia") Radiologia   
         option(value="Laboratorio") Laboratorio    
         option(value="Reanimacion") Reanimacion    
         option(value="Endoscopia") Endoscopia    
@@ -31,6 +31,7 @@ form(action="http://localhost:8000/admission/new" name="POST")
     .input 
       label(for="room_number") Numero de Habitacion 
       select(id="room_number" name="room_number")
+        option(value="-- none --") -- none --
     //- Motive
     .input 
       label(for="motivo") Motivo

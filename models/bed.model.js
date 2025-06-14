@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
   Bed.associate = models => {
     Bed.hasOne(models.Admission, {
       foreignKey: "room_number",
-      as: "admission",
+      as: "bed",
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });

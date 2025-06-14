@@ -2,7 +2,7 @@
 import queryFetch from './fetch.js';
 
 document.querySelectorAll("form").forEach($form => {
-  $form.addEventListener("submit", async evt => {
+  $form.addEventListener("submit", async function (evt) {
     // Prevengo que el formulario recargue la pagina
     evt.preventDefault();
     // Instancio un objeto con todos los datos del formulario
@@ -15,7 +15,10 @@ document.querySelectorAll("form").forEach($form => {
     console.log(`This is body ---> ${JSON.stringify(body)}`);
     console.log(`This is action ---> ${$form.action}`);
     console.log(`This is method ---> ${$form.name}`);
-    try { await queryFetch($form.action, $form.name, body); }
-    catch (err) { console.error(`Fetch ${err}`) }
+    
+    // try { await queryFetch($form.action, $form.name, body); }
+    // catch (err) { console.error(`Fetch ${err}`) }
+
+    this.querySelectorAll(`input`).forEach($input => $input.value = ``,);  
   });
 });

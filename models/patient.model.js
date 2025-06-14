@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Patient = sequelize.define("Patient", {
     dni: {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER(8),
       primaryKey: true,
       allowNull: false,
       unique: true,
@@ -66,21 +66,23 @@ module.exports = (sequelize, DataTypes) => {
   Patient.associate = models => {
     Patient.hasOne(models.Medical_History, {
       foreignKey: "patient_dni",
-      as: "medical history",
+      as: "patient_medical_history",
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
 
-    Patient.belongsToMany(models.User, {
-      through: models.Admission,
+    Patient.hasMany(models.Admission, {
       foreignKey: "patient_dni",
-      as: "admission"
+      as: "patient_admission",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
-  
-    Patient.belongsToMany(models.User, {
-      through: models.Study,
+
+    Patient.hasMany(models.Study, {
       foreignKey: "patient_dni",
-      as: "study",
+      as: "patient_study",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
   };
 
