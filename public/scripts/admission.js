@@ -1,5 +1,7 @@
 import queryFetch from "./fetch.js";
 
+const BASE_URL = `https://unimedtpi-production.up.railway.app/`;
+
 const $ = selector => document.querySelector(selector);
 const $$ = selector => document.querySelectorAll(selector);
 const formatDate = date => {
@@ -38,17 +40,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 $button_new_patient.addEventListener("click", async function () {
-  try { 
-    const data = await queryFetch(`http://localhost:8000/patient/get-one/10123123`)
-    
-    console.log(`\nRESULTADO ==>> ${JSON.stringify(data)}`);
-  } catch (err) { console.log(`\nERROR ${err}\n`); }
-
-
-
-
-
-
   if ($table.classList.contains(`right_shift`)) return;
 
   const $form = $div_patient.querySelector(`form`);
@@ -62,7 +53,7 @@ $button_new_patient.addEventListener("click", async function () {
     $input.type = `text`;
     $input.value = ``;
   });
-  $form.action = `http://localhost:8000/patient/new`;
+  $form.action = `${BASE_URL}patient/new`;
   $form.name = `POST`;
 
   if (this.innerHTML === `Cancelar`) {
@@ -103,7 +94,7 @@ $button_emergency.addEventListener("click", () => {
     if ($input.name !== `dni`) $input.type = `password`;
     $input.value = ``;
   });
-  $form.action = `http://localhost:8000/patient/new`;
+  $form.action = `${BASE_URL}patient/new`;
   $form.name = `POST`;
 
   // Set DNI
@@ -145,13 +136,13 @@ $button_emergency.addEventListener("click", () => {
 
     try {
       await queryFetch(
-        `http://localhost:8000/new`,
+        `${BASE_URL}new`,
         `POST`,
         admission
       );
 
       await queryFetch(
-        `http://localhost:8000/bed/801`,
+        `${BASE_URL}bed/801`,
         `PUT`,
         room
       );
@@ -188,7 +179,7 @@ $pending_visits.addEventListener("click", async function () {
 
   if (this.checked) {
     try {
-      const data = await queryFetch(`http://localhost:8000/get-all-users`);
+      const data = await queryFetch(`${BASE_URL}get-all-users`);
 
       PATIENTS.length = 0;
 
@@ -324,7 +315,7 @@ $rooms.addEventListener("change", async function () {
 
   try {
     const ROOMS = await queryFetch(
-      `http://localhost:8000/bed/get-all/${this.value}`
+      `${BASE_URL}bed/get-all/${this.value}`
     );
 
     const $fragment = document.createDocumentFragment();
@@ -390,13 +381,13 @@ $update_admission.addEventListener("click", function () {
       value.dni === +patientDNI
     )[0].id;
 
-    $form.action = `http://localhost:8000/${admissionID}`;
+    $form.action = `${BASE_URL}${admissionID}`;
     $form.name = `PUT`;
 
     $form.querySelector(`button`).innerHTML = `Actualizar`;
   } else {
     $div_admission.querySelector(`h2`).innerHTML = `Derivar Paciente`;
-    $form.action = `http://localhost:8000/new`;
+    $form.action = `${BASE_URL}new`;
     $form.name = `POST`;
 
     $form.querySelector(`button`).innerHTML = `Derivar`;
@@ -437,8 +428,8 @@ async function recoverPatients(dni) {
     PATIENTS.length = 0;
 
     const URL = ($no_admissions.checked)
-      ? `http://localhost:8000/patient/get-all/${dni}`
-      : `http://localhost:8000/get-all/${dni}/${$discharged_patients.value}`;
+      ? `${BASE_URL}patient/get-all/${dni}`
+      : `${BASE_URL}get-all/${dni}/${$discharged_patients.value}`;
 
     const patientData = await queryFetch(URL);
 
@@ -549,7 +540,7 @@ function registerAdmission(evt) {
     const $ingreso = $(`#ingreso`);
     const patientDNI = $td[3].innerHTML;
 
-    $form.action = `http://localhost:8000/new`;
+    $form.action = `${BASE_URL}new`;
     $form.name = `POST`;
     $button.innerHTML = ($discharged_patients.checked || $no_admissions.checked)
       ? `Registrar`
@@ -566,7 +557,7 @@ function registerAdmission(evt) {
 
       const admissionID = selectedPatient.id;
 
-      $form.action = `http://localhost:8000/${admissionID}`;
+      $form.action = `${BASE_URL}${admissionID}`;
 
       $ingreso.value = selectedPatient.ingreso;
     }
@@ -606,7 +597,7 @@ function updatePatient(evt) {
     }
 
     const $form = $div_patient.querySelector(`form`);
-    $form.action = `http://localhost:8000/patient/${patientDNI}`;
+    $form.action = `${BASE_URL}patient/${patientDNI}`;
     $form.name = `PUT`;
 
     $form.querySelector(`button`).innerHTML = `Actualizar`;
@@ -635,9 +626,9 @@ async function deletePatient(evt) {
       ? `Registrar`
       : `Derivar`;
 
-    $admission_form.action = `http://localhost:8000/new`;
+    $admission_form.action = `${BASE_URL}new`;
     $admission_form.name = `POST`;
-    $patient_form.action = `http://localhost:8000/patient/new`;
+    $patient_form.action = `${BASE_URL}patient/new`;
     $patient_form.name = `POST`;
 
     $$(`tr`).forEach($all_tr => $all_tr.className = ``);
@@ -681,7 +672,7 @@ async function deletePatient(evt) {
         $tr.remove();
 
         await queryFetch(
-          `http://localhost:8000/patient/${dni}`,
+          `${BASE_URL}patient/${dni}`,
           `DELETE`
         );
       }, 1000);
@@ -782,7 +773,7 @@ async function assignRoom(patientDNI) {
     )[0].sexo;
 
     const room = await queryFetch(
-      `http://localhost:8000/bed/get-one/${roomNumber}`
+      `${BASE_URL}bed/get-one/${roomNumber}`
     );
 
     switch (room.capacidad) {
@@ -800,7 +791,7 @@ async function assignRoom(patientDNI) {
     room.restriccion_genero = patientSex;
 
     await queryFetch(
-      `http://localhost:8000/bed/${roomNumber}`,
+      `${BASE_URL}bed/${roomNumber}`,
       `PUT`,
       room
     );
@@ -820,7 +811,7 @@ async function updateRoom(action, patientDNI) {
     const admissionID = selectedPatient.id;
 
     const room = await queryFetch(
-      `http://localhost:8000/bed/get-one/${roomNumber}`
+      `${BASE_URL}bed/get-one/${roomNumber}`
     );
 
     if (room.capacidad !== 2) {
@@ -837,7 +828,7 @@ async function updateRoom(action, patientDNI) {
     if (action === `vacate`) {
       // Actualizo la informacion de la 'vieja' recepcion
       await queryFetch(
-        `http://localhost:8000/${admissionID}`,
+        `${BASE_URL}${admissionID}`,
         `PUT`,
         { egreso: new Date() }
       );
@@ -845,7 +836,7 @@ async function updateRoom(action, patientDNI) {
 
     // Actualizo la informacion de la habitacion/cama que se acaba de liberar
     await queryFetch(
-      `http://localhost:8000/bed/${roomNumber}`,
+      `${BASE_URL}bed/${roomNumber}`,
       `PUT`,
       room
     );
