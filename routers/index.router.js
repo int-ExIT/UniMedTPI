@@ -4,10 +4,10 @@ const app = require("../config/app");
 const bed = require("./bed.router");
 const study = require("./study.router");
 const patient = require("./patient.router");
-const index = require("./admission.router");
+const admission = require("./admission.router");
 
 //-------------------------------------------------- GET ROUTES ---
-app.use(index);
+app.use(`/`, admission);
 app.use(`/bed`, bed);
 app.use(`/study`, study);
 app.use(`/patient`, patient);

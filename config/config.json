@@ -1,11 +1,11 @@
 {
   "development": {
     "username": "root",
-    "password": "fSfsUsebMNytFsOgMMGKyGVnisPECwXz",
-    "database": "railway",
-    "host": "caboose.proxy.rlwy.net",
+    "password": "",
+    "database": "uni_med",
+    "host": "localhost",
     "dialect": "mysql",
-    "port": 31187
+    "port": 8000
   },
   "test": {},
   "production": {

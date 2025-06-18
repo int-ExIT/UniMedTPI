@@ -22,7 +22,7 @@ router.get("/get-one/:patient_dni", CONTROLLER.selectOne);
 
 router.get("/get-all/:patient_dni/:filter", CONTROLLER.selectAll);
 
-router.get("/get-all-users/", CONTROLLER.selectAllUsers);
+router.get("/get-all-users", CONTROLLER.selectAllUsers);
 
 router.put("/:id", CONTROLLER.update);
 

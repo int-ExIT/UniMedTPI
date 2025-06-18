@@ -37,7 +37,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   fillTableHeaders();
 });
 
-$button_new_patient.addEventListener("click", function () {
+$button_new_patient.addEventListener("click", async function () {
+  try { 
+    const data = await queryFetch(`http://localhost:8000/patient/get-one/10123123`)
+    
+    console.log(`\nRESULTADO ==>> ${JSON.stringify(data)}`);
+  } catch (err) { console.log(`\nERROR ${err}\n`); }
+
+
+
+
+
 
   if ($table.classList.contains(`right_shift`)) return;
 
@@ -398,6 +408,7 @@ $buttons_forms.forEach($btn => {
   $btn.addEventListener("click", async function (evt) {
     const $form = evt.target.closest(`form`);
     const flag = $form.action.includes(`patient`);
+    $button_new_patient.innerHTML = `Nuevo Paciente`;
 
     if (flag) $inputs_fecha[0].value = formatDate($inputs_fecha[0].value);
     else {
