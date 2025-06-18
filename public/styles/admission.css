@@ -15,24 +15,28 @@ form {
   font-size: 17pt;
   align-items: center;
   justify-content: center;
+
+  input {
+    color: inherit;
+    width: 125px;
+    outline: none;
+    text-align: center;
+    transition: all 1s;
+    background: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: rgba(255, 255, 255, 1);
+  }
+
+  input:focus,
+  input:hover {
+    transition: all 1s;
+    border-color: rgb(255, 238, 0);
+    background-color: inherit;
+  }
 }
-.search_patient input {
-  color: inherit;
-  width: 125px;
-  outline: none;
-  text-align: center;
-  transition: all 1s;
-  background: transparent;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-color: rgba(255, 255, 255, 1);
-}
-.search_patient input:focus, input:hover {
-  transition: all 1s;
-  border-color: rgb(255, 238, 0);
-  background-color: inherit;
-}
+
 .search_patient button {
   color: rgb(255, 238, 0);
   margin: 0px;
@@ -41,6 +45,7 @@ form {
   transition: all 1s;
   background: transparent;
 }
+
 .search_patient button:hover {
   color: rgb(255, 238, 0);
   transition: all 1s;
@@ -53,6 +58,7 @@ form {
   align-items: center;
   height: 100%;
   width: auto;
+  font-size: 14pt;
 }
 
 button {
@@ -65,9 +71,51 @@ button {
   width: 200px;
   color: rgba(255, 255, 255, 0.7);
 }
+
 button:hover {
   background-color: rgba(0, 26, 255, 1);
   border-radius: 20px;
   transition: all 0.5s;
   color: rgba(255, 255, 255, 0.9);
+}
+
+.emergency_button {
+  display: flex;
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  top: 15px;
+  gap: 20px;
+
+  #emergency {
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 50%;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+    height: 40px;
+    width: 40px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  #emergency:hover {
+    background-color: rgba(255, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    scale: 1.5;
+  }
+  
+  #new_patient {
+    background-color: rgba(0, 153, 255, 0.5);
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+    height: 40px;
+    width: 200px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  #new_patient:hover {
+    background-color: rgba(0, 153, 255, 1);
+    color: rgba(255, 255, 255, 1);
+  }
 }

@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
   res.status(200).render("admission", {
     title: "UniMed-Reception",
     scripts: [
-      "../public/scripts/patient/admission.js",
+      "../public/scripts/admission.js",
       "../public/scripts/dataCollector.js",
     ],
     styles: [
@@ -22,8 +22,10 @@ router.get("/get-one/:patient_dni", CONTROLLER.selectOne);
 
 router.get("/get-all/:patient_dni/:filter", CONTROLLER.selectAll);
 
-router.put("/:patient_dni", CONTROLLER.update);
+router.get("/get-all-users/", CONTROLLER.selectAllUsers);
 
-router.delete("/:patient_dni", CONTROLLER.remove);
+router.put("/:id", CONTROLLER.update);
+
+router.delete("/:id", CONTROLLER.remove);
 
 module.exports = router;

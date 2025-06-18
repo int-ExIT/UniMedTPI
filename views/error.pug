@@ -1,0 +1,47 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    
+    style. 
+      body {
+        display: flex;
+        padding: 0px;
+        position: relative;
+        margin: 0px;
+        width: 100%;
+        hight: 100vhd;
+        justify-content: center;
+        align-items: center;
+      }
+      .message {
+        position: absolute;
+        color: red;
+        bottom: 50%;
+        top: 50%;
+        animation: moove 5s infinite alternate linear;
+      }
+      
+      @keyframes moove {
+        0% {
+          transform: translateX(-1200px);
+          scale: .5;
+          opacity: 0;
+        }
+        50% {
+          scale: 1.5;
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(1200px);
+          scale: .5;
+          opacity: 0;
+        }
+      }
+
+
+    title Error
+  body 
+    .message 
+      h1=`Error ${status}`

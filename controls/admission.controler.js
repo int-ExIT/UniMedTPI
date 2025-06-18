@@ -2,6 +2,7 @@ const {
   Admission: MODEL,
   Patient,
   Study,
+  User,
   Bed
 } = require("../models/index.model");
 const { Op } = require("sequelize");
@@ -71,11 +72,15 @@ async function selectAll(req, res) {
     const getAll = req.params.patient_dni === `undefined`;
     const filter = req.params.filter === `not`;
 
-    const CONDITION_DNI = (getAll) ? { [Op.not]: null } : { [Op.like]: `${req.params.patient_dni}%` };
-    const CONDITION_EGRESS = (filter) ? { [Op.not]: null } : { [Op.is]: null };
+    const CONDITION_DNI = (getAll)
+      ? { patient_dni: { [Op.not]: null } }
+      : { patient_dni: { [Op.like]: `${req.params.patient_dni}%` } };
+    const CONDITION_EGRESS = (filter)
+      ? { egreso: { [Op.not]: null } }
+      : { egreso: { [Op.is]: null } };
 
     const elements = await MODEL.findAll({
-      attributes: ["room_number", "ingreso", "egreso"],
+      attributes: ["id", "room_number", "ingreso", "egreso"],
       include: [
         {
           model: Bed,
@@ -86,9 +91,9 @@ async function selectAll(req, res) {
           model: Patient,
           as: "patient_admission",
           attributes: [
-            "dni", "nombre", "apellido", "contacto", 
-            "email", "direccion", "estado_civil", 
-            "sexo", "edad", "contacto_particular", 
+            "dni", "nombre", "apellido", "contacto",
+            "email", "direccion", "estado_civil",
+            "sexo", "edad", "contacto_particular",
             "fecha_nacimiento"
           ],
           include: [{
@@ -98,8 +103,43 @@ async function selectAll(req, res) {
           }]
         }
       ], where: {
-        patient_dni: CONDITION_DNI,
-        egreso: CONDITION_EGRESS
+        ...CONDITION_DNI,
+        ...CONDITION_EGRESS
+      }
+    });
+
+    res.status(200).json({
+      message: `(${MODEL.name}) Successful All Selections`,
+      body: elements,
+    });
+  }
+  catch (err) {
+    res.status(500).json({
+      message: `(${MODEL.name}) Unsuccessful All Selections ${err}`
+    });
+  }
+}
+
+async function selectAllUsers(req, res) {
+  try {
+    const elements = await MODEL.findAll({
+      attributes: ["id", "room_number", "ingreso"],
+      include: [
+        {
+          model: User,
+          as: "user_admission",
+          attributes: ["dni", "nombre", "apellido"]
+        },
+        {
+          model: Patient,
+          as: "patient_admission",
+          attributes: ["dni", "nombre", "apellido", "contacto", "email"],
+        }
+      ], where: {
+        patient_dni: { [Op.not]: null },
+        egreso: { [Op.is]: null },
+        ingreso: { [Op.gt]: new Date() },
+        "$user_admission.rol$": "Medico"
       }
     });
 
@@ -118,7 +158,7 @@ async function selectAll(req, res) {
 async function update(req, res) {
   try {
     const affectedRows = await MODEL.update(req.body, {
-      where: { patient_dni: req.params.patient_dni }
+      where: { id: req.params.id }
     });
 
     res.status(200).json({
@@ -136,7 +176,7 @@ async function update(req, res) {
 async function remove(req, res) {
   try {
     const affectedRows = await MODEL.destroy({
-      where: { patient_dni: req.params.patient_dni }
+      where: { id: req.params.id }
     });
 
     res.status(200).json({
@@ -157,4 +197,5 @@ module.exports = {
   remove,
   selectOne,
   selectAll,
+  selectAllUsers,
 };

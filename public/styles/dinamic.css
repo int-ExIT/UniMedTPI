@@ -19,7 +19,7 @@
   display: block;
   background-color: rgb(21, 25, 29);
   border-radius: 5px;
-  transition: width 1s;
+  transition: width .5s;
   overflow: auto;
   position: absolute;
   padding: 5px;
@@ -44,13 +44,13 @@
 }
 
 .right_shift {
-  transition: width 1s;
+  transition: width .5s;
   overflow: hidden;
   width: 82%;
 }
 
 .left_shift {
-  transition: width 1s;
+  transition: width .5s;
   overflow: hidden;
   width: 66%;
 }
@@ -59,7 +59,7 @@
 .left_main {
   display: none;
   overflow: hidden;
-  transition: opacity 1s;
+  transition: opacity .5s;
   flex-direction: column;
   justify-content: start;
   align-items: start;
@@ -71,7 +71,7 @@
 }
 
 .look_left {
-  transition: opacity 1s;
+  transition: opacity .5s;
   opacity: 1;
 }
 
@@ -79,7 +79,7 @@
 .main_right {
   display: none;
   overflow: hidden;
-  transition: opacity 1s;
+  transition: opacity .5s;
   flex-direction: column;
   justify-content: start;
   align-items: end;
@@ -91,7 +91,7 @@
 }
 
 .look_right {
-  transition: opacity 1s;
+  transition: opacity .5s;
   opacity: 1;
 }
 
@@ -99,39 +99,39 @@ td button {
   width: auto;
   height: auto;
   padding: 2px 10px;
-  transition: opacity 1s;
+  transition: opacity .5s;
   opacity: 1;
   margin: 0px;
 }
 
-td .update {
+.update {
   background-color: rgba(17, 155, 17, 0.5);
 }
 
-td .update:hover {
+.update:hover {
   background-color: rgba(17, 155, 17, 1);
 }
 
-td .delete {
+.delete {
   background-color: rgba(155, 33, 17, 0.5);
 }
 
-td .delete:hover {
+.delete:hover {
   background-color: rgba(155, 33, 17, 1);
 }
 
-td .cancel {
+.cancel {
   background-color: rgba(255, 230, 0, 0.5);
 }
 
-td .cancel:hover {
+.cancel:hover {
   background-color: rgba(255, 230, 0, 0.8);
 }
 
 .hidden_button {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 2s;
+  transition: opacity 1s;
 }
 
 tbody .tr {

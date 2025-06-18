@@ -1,4 +1,7 @@
-const { Patient: MODEL } = require("../models/index.model");
+const {
+  Patient: MODEL,
+  Admission
+} = require("../models/index.model");
 const { Op } = require("sequelize");
 
 async function insert(req, res) {
@@ -45,16 +48,28 @@ async function selectOne(req, res) {
 
 async function selectAll(req, res) {
   try {
-    let patients;
+    const getAll = req.params.dni === `undefined`;
+    const CONDITION_DNI = getAll
+      ? { dni: { [Op.not]: null } }  
+      : { dni: { [Op.like]: `${req.params.dni}%` } };
 
-    if (req.params.dni) patients = await MODEL.findAll({
+    const patients = await MODEL.findAll({
+      include: [{
+        model: Admission,
+        as: `patient_admission`,
+        required: false
+      }],
       where: {
-        dni: {
-          [Op.like]: `${req.params.dni}%`
-        }
-      }
+        ...CONDITION_DNI,
+        "$patient_admission.patient_dni$": null
+      },
+      attributes: [
+        "dni", "nombre", "apellido", "contacto",
+        "email", "direccion", "estado_civil",
+        "sexo", "edad", "contacto_particular",
+        "fecha_nacimiento"
+      ]
     });
-    else patients = await MODEL.findAll();
 
     res.status(200).json({
       message: `(${MODEL.name}) Successful All Selections`,

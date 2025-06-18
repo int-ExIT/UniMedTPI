@@ -1,18 +1,29 @@
-h2(style="margin: 0px 0px 0px 15px;") Registrar Admision
+h2(style="margin: 0px 0px 0px 15px; width: 100px;") Derivar Paciente
 form(action="http://localhost:8000/admission/new" name="POST")
   .register
     //- DNI-User
     .input(style="display: none;") 
       label(for="user_dni") DNI Usuario 
-      input(type="text" id="user_dni" name="user_dni" autocomplete="off" spellcheck="false" value="20000001")
+      select(id="user_dni" name="user_dni") 
+        option(value="20000001") Admission
+        option(value="20000016") Dr. Juan Lopez
+        option(value="20000017") Dra. Elena Juarez
+        option(value="20000018") Dra. Laura Allende
+        option(value="20000019") Dra. Lucia Martinez
+        option(value="20000020") Dr. Mario Martinez
+        option(value="20000021") Dr. Dario Avellaneda
+        option(value="20000022") Dr. Carlos Gomez
+        option(value="20000023") Dr. Jose Pepe
+        option(value="20000024") Dr. Lazaro Gane
     //- DNI
     .input(style="display: none;") 
       label(for="patient_dni") DNI 
-      input(type="text" id="patient_dni" name="patient_dni" autocomplete="off" spellcheck="false" value="" placeholder="Ingrese DNI" autofocus)
+      input(type="text" id="patient_dni" name="patient_dni" autocomplete="off" spellcheck="false" value="" placeholder="Ingrese DNI")
     //- Category
     .input 
       label(for="tipo_habitacion") Categoria 
       select(id="tipo_habitacion" name="tipo_habitacion")
+        option(value="none") Selecciar habitacion 
         option(value="Consulta General") Consulta General
         option(value="Consulta Especializada") Consulta Especializada
         option(value="Habitacion de Hospitalizacion") Hospitalizacion    
@@ -39,10 +50,26 @@ form(action="http://localhost:8000/admission/new" name="POST")
         option(value="Cita Medica") Cita Medica
         option(value="Derivacion") Derivacion
         option(value="Urgencia") Urgencia
+    //- Income
+    .input(style="display: none;") 
+      label(for="ingreso") Ingreso 
+      input(type="text" id="ingreso" name="ingreso" autocomplete="off" spellcheck="false" value="20000001")
+    //- Egress
+    .input(style="display: none;") 
+      label(for="egreso") Egreso 
+      input(type="text" id="egreso" name="egreso" autocomplete="off" spellcheck="false" value="")
     //- Symptoms
     .input 
       label(for="sintomas") Sintomas 
       textarea(id="sintomas" name="sintomas")
+    //- Modify Admission
+    .input_check.check_modify
+      label(for="update") Modificar Admision 
+      input(type="checkbox" name="update" id="update")
+    //- Program Admission
+    .input_check.check_program(style="display: none;")
+      label(for="program") Programar Admision 
+      input(type="checkbox" name="program" id="program")
     //- Boton Enviar
     .buttons
-      button.send Registrar 
+      button.send Derivar 

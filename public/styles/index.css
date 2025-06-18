@@ -29,6 +29,19 @@ header {
   height: 70px;
   color: rgba(255, 255, 255, 0.5);
 }
+
+.notification {
+  opacity: 0;
+  display: flex;
+  font-size: 20pt;
+  transition: opacity 1s;
+  flex-direction: row;
+  position: absolute;
+  bottom: 15px;
+  left: 50px;
+  top: 15px;
+}
+
 .navbar {
   display: inherit;
   flex-direction: inherit;
@@ -37,6 +50,7 @@ header {
   padding: 10px 15px;
   gap: 50px;
 }
+
 .logo {
   display: inherit;
   flex-direction: inherit;
@@ -69,10 +83,12 @@ h1 {
   padding: 4px 0px 0px 0px;
   margin: 0px;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 header a:hover {
   color: white;
 }
@@ -81,10 +97,12 @@ input {
   width: 200px;
   height: 38px;
 }
+
 select {
   width: 200px;
   height: 38px;
 }
+
 textarea {
   width: 200px;
   height: 100px;
@@ -104,21 +122,33 @@ textarea {
   flex-direction: column;
 }
 
+.input_check {
+  gap: 5px;
+  display: flex;
+  flex-direction: row;
+  
+  input {
+    margin: auto;
+    height: 14pt;
+    width: 14pt;
+  }
+}
+
 .input label {
   text-align: start;
-  font-size: 14pt;
 }
 
 .input input {
   background-color: rgb(21, 25, 29, 0.8);
   transition: all 1s;
-  font-size: 18pt;
   outline: none;
   margin: 3px 0px;
   border: none;
   color: rgba(255, 255, 255, 0.7);
 }
-.input input:hover, input:focus {
+
+.input input:hover,
+input:focus {
   color: rgba(255, 255, 255, 1);
   transition: all 1s;
   background-color: rgb(21, 25, 29, 1);
@@ -127,13 +157,14 @@ textarea {
 .input select {
   background-color: rgb(21, 25, 29, 0.8);
   transition: all 1s;
-  font-size: 18pt;
   outline: none;
   margin: 3px 0px;
   border: none;
   color: rgba(255, 255, 255, 0.7);
 }
-.input select:hover, select:focus {
+
+.input select:hover,
+select:focus {
   color: rgba(255, 255, 255, 1);
   transition: all 1s;
   background-color: rgb(21, 25, 29, 1);
@@ -142,7 +173,6 @@ textarea {
 .input textarea {
   background-color: rgb(21, 25, 29, 0.8);
   transition: all 1s;
-  font-size: 14pt;
   overflow: hidden;
   outline: none;
   margin: 3px 0px;
@@ -150,7 +180,9 @@ textarea {
   border: none;
   color: rgba(255, 255, 255, 0.7);
 }
-.input textarea:hover, textarea:focus {
+
+.input textarea:hover,
+textarea:focus {
   color: rgba(255, 255, 255, 1);
   transition: all 1s;
   background-color: rgb(21, 25, 29, 1);

@@ -14,4 +14,19 @@ app.use(`/study`, study);
 app.use(`/patient`, patient);
 app.use(`/admission`, admission);
 
+//------------------------------------------------------ ERRORS ---
+app.use((req, res, next) => {
+  res.status(404).render("error", {
+    status: 404
+  });
+});
+
+app.use((err, req, res, next) => {
+  console.error(`Error: ${err.stack}`);
+
+  res.status(500).render("error", {
+    status: 500
+  });
+});
+
 module.exports = app;

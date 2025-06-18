@@ -1,11 +1,14 @@
 extends layout
 
 block header
+  .notification
+    h3(id="notification")
   .search_patient
     label(for="search") Busqueda 
     input(type="text" id="search" autocomplete="off" spellcheck="false" value="" placeholder="Ingrese DNI" maxlength="8")
-    //- ELIMINAR
-    button(id="tester") tester 
+  .emergency_button
+    button(id="new_patient") Nuevo Paciente 
+    button(id="emergency") ! 
 block left_main
   #l_main.left_main 
     include ./components/admission.register.pug 
