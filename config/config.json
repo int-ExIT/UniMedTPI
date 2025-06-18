@@ -1,12 +1,5 @@
 {
-  "development": {
-    "username": "root",
-    "password": "fSfsUsebMNytFsOgMMGKyGVnisPECwXz",
-    "database": "railway",
-    "host": "mysql.railway.internal",
-    "dialect": "mysql",
-    "port": 3306
-  },
+  "development": {},
   "test": {},
   "production": {
     "username": "root",
