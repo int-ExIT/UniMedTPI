@@ -8,5 +8,12 @@
     "port": 3306
   },
   "test": {},
-  "production": {}
+  "production": {
+    "username": "root",
+    "password": "fSfsUsebMNytFsOgMMGKyGVnisPECwXz",
+    "database": "railway",
+    "host": "mysql.railway.internal",
+    "dialect": "mysql",
+    "port": 3306
+  }
 }
