@@ -75,3 +75,20 @@ backend, y pug, css y javascript para la composicion del frontend.
 
 
 <Desarrollado por /Torres /Ignacio /41682078>
+
+💥FUNCIONAMIENTO💥
+ Clikear sobre cualquier fila que contega informacion de un paciente. Esto va a /*desplegar un formulario de admission*/ que 
+permitira:
+  Para pacientes dados de alta 👍​:
+    👉​ Se podra /*Registrar*/ al paciente.
+    👉​ Se podra /*Acordar una Cita Medica*/ al paciente.
+  Para internos 👎​​:
+    👉​ Se podra /*Reasignar*/ al paciente, esta accion dejara la habitacion previamente ocupada por el paciente inabilitada por falta de limpieza.
+    👉​ /*Actualizar/Corregir*/ la informacion de la admision en caso de una mala asignacion. Esta accion devolvera los datos de la habitacion a como estaban, quitando la restriccion de genero (en caso de que el paciente haya sido el unico que la ocupaba).
+ Tambien se podra: 
+    🤜​ /*actualizar pacientes*/ 
+    🤜​ /*eliminar pacientes*/
+    🤜​ /*registrar pacientes de emergencia*/ 
+    💁‍♀️​​ Y por supuesto /*registrar nuevos pacientes*/ 
+
+/*SUERTE 🏳️​🏳️​🏳️​*/
