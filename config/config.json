@@ -1,5 +1,12 @@
 {
-  "development": {},
+  "development": {
+    "username": "root",
+    "password": "fSfsUsebMNytFsOgMMGKyGVnisPECwXz",
+    "database": "railway",
+    "host": "caboose.proxy.rlwy.net",
+    "dialect": "mysql",
+    "port": 31187
+  },
   "test": {},
   "production": {
     "username": "root",

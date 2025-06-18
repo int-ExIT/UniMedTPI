@@ -135,7 +135,7 @@ $button_emergency.addEventListener("click", () => {
 
     try {
       await queryFetch(
-        `http://localhost:8000/admission/new`,
+        `http://localhost:8000/new`,
         `POST`,
         admission
       );
@@ -178,7 +178,7 @@ $pending_visits.addEventListener("click", async function () {
 
   if (this.checked) {
     try {
-      const data = await queryFetch(`http://localhost:8000/admission/get-all-users`);
+      const data = await queryFetch(`http://localhost:8000/get-all-users`);
 
       PATIENTS.length = 0;
 
@@ -380,13 +380,13 @@ $update_admission.addEventListener("click", function () {
       value.dni === +patientDNI
     )[0].id;
 
-    $form.action = `http://localhost:8000/admission/${admissionID}`;
+    $form.action = `http://localhost:8000/${admissionID}`;
     $form.name = `PUT`;
 
     $form.querySelector(`button`).innerHTML = `Actualizar`;
   } else {
     $div_admission.querySelector(`h2`).innerHTML = `Derivar Paciente`;
-    $form.action = `http://localhost:8000/admission/new`;
+    $form.action = `http://localhost:8000/new`;
     $form.name = `POST`;
 
     $form.querySelector(`button`).innerHTML = `Derivar`;
@@ -399,7 +399,7 @@ $buttons_forms.forEach($btn => {
     const $form = evt.target.closest(`form`);
     const flag = $form.action.includes(`patient`);
 
-    if (flag) $input_fecha.value = formatDate($input_fecha.value);
+    if (flag) $inputs_fecha[0].value = formatDate($inputs_fecha[0].value);
     else {
       const patientDNI = $(`#patient_dni`).value;
 
@@ -427,7 +427,7 @@ async function recoverPatients(dni) {
 
     const URL = ($no_admissions.checked)
       ? `http://localhost:8000/patient/get-all/${dni}`
-      : `http://localhost:8000/admission/get-all/${dni}/${$discharged_patients.value}`;
+      : `http://localhost:8000/get-all/${dni}/${$discharged_patients.value}`;
 
     const patientData = await queryFetch(URL);
 
@@ -538,7 +538,7 @@ function registerAdmission(evt) {
     const $ingreso = $(`#ingreso`);
     const patientDNI = $td[3].innerHTML;
 
-    $form.action = `http://localhost:8000/admission/new`;
+    $form.action = `http://localhost:8000/new`;
     $form.name = `POST`;
     $button.innerHTML = ($discharged_patients.checked || $no_admissions.checked)
       ? `Registrar`
@@ -555,7 +555,7 @@ function registerAdmission(evt) {
 
       const admissionID = selectedPatient.id;
 
-      $form.action = `http://localhost:8000/admission/${admissionID}`;
+      $form.action = `http://localhost:8000/${admissionID}`;
 
       $ingreso.value = selectedPatient.ingreso;
     }
@@ -624,7 +624,7 @@ async function deletePatient(evt) {
       ? `Registrar`
       : `Derivar`;
 
-    $admission_form.action = `http://localhost:8000/admission/new`;
+    $admission_form.action = `http://localhost:8000/new`;
     $admission_form.name = `POST`;
     $patient_form.action = `http://localhost:8000/patient/new`;
     $patient_form.name = `POST`;
@@ -826,7 +826,7 @@ async function updateRoom(action, patientDNI) {
     if (action === `vacate`) {
       // Actualizo la informacion de la 'vieja' recepcion
       await queryFetch(
-        `http://localhost:8000/admission/${admissionID}`,
+        `http://localhost:8000/${admissionID}`,
         `PUT`,
         { egreso: new Date() }
       );
