@@ -4,7 +4,7 @@
   "description": "Trabajo Practico Integrador",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "start:db": "node ./models/index.model.js"
   },
   "repository": {
