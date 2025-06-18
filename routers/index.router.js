@@ -11,7 +11,6 @@ app.use(index);
 app.use(`/bed`, bed);
 app.use(`/study`, study);
 app.use(`/patient`, patient);
-app.use(`/admission`, admission);
 
 //------------------------------------------------------ ERRORS ---
 app.use((req, res, next) => {
