@@ -10,7 +10,7 @@ module.exports = {
     user: process.env.SQL_USER,
     password: process.env.SQL_PASSWORD,
     host: process.env.SQL_HOST,
-    dialect: process.env.SEQUELIZE_DIALECT,
+    dialect: "mysql",
     port: process.env.SQL_PORT,
   }
 }

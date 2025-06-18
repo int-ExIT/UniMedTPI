@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     contacto: {
-      type: DataTypes.INTEGER(12),
+      type: DataTypes.BIGINT(10),
       allowNull: false,
     },
     email: {
