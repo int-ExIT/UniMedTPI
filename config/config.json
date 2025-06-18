@@ -3,9 +3,9 @@
     "username": "root",
     "password": "fSfsUsebMNytFsOgMMGKyGVnisPECwXz",
     "database": "railway",
-    "host": "caboose.proxy.rlwy.net",
+    "host": "mysql.railway.internal",
     "dialect": "mysql",
-    "port": 31187
+    "port": 3306
   },
   "test": {},
   "production": {}
