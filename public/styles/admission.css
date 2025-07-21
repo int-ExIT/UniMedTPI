@@ -7,51 +7,6 @@ form {
   gap: 30px;
 }
 
-.search_patient {
-  color: rgba(255, 255, 255, 1);
-  gap: 10px;
-  width: 100%;
-  display: flex;
-  font-size: 17pt;
-  align-items: center;
-  justify-content: center;
-
-  input {
-    color: inherit;
-    width: 125px;
-    outline: none;
-    text-align: center;
-    transition: all 1s;
-    background: transparent;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-color: rgba(255, 255, 255, 1);
-  }
-
-  input:focus,
-  input:hover {
-    transition: all 1s;
-    border-color: rgb(255, 238, 0);
-    background-color: inherit;
-  }
-}
-
-.search_patient button {
-  color: rgb(255, 238, 0);
-  margin: 0px;
-  padding: 0px;
-  font-size: 17pt;
-  transition: all 1s;
-  background: transparent;
-}
-
-.search_patient button:hover {
-  color: rgb(255, 238, 0);
-  transition: all 1s;
-  background: transparent;
-}
-
 .register {
   display: flex;
   flex-direction: column;
@@ -61,61 +16,54 @@ form {
   font-size: 14pt;
 }
 
-button {
-  background-color: rgba(0, 26, 255, 0.8);
-  border-radius: 20px;
-  transition: all 0.5s;
-  margin-top: 10px;
-  border: none;
-  height: 35px;
-  width: 200px;
-  color: rgba(255, 255, 255, 0.7);
+.right_shift {
+  transition: width .5s;
+  overflow: hidden;
+  width: 82%;
 }
 
-button:hover {
-  background-color: rgba(0, 26, 255, 1);
-  border-radius: 20px;
-  transition: all 0.5s;
-  color: rgba(255, 255, 255, 0.9);
+.left_shift {
+  transition: width .5s;
+  overflow: hidden;
+  width: 66%;
 }
 
-.emergency_button {
-  display: flex;
+/* Admission Register */
+.left_main {
+  display: none;
+  overflow: hidden;
+  transition: opacity .5s;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
   position: absolute;
-  bottom: 15px;
-  right: 20px;
-  top: 15px;
-  gap: 20px;
+  opacity: 0;
+  height: 95%;
+  width: 18%;
+  left: 5px;
+}
 
-  #emergency {
-    background-color: rgba(255, 0, 0, 0.5);
-    border-radius: 50%;
-    font-weight: bold;
-    padding: 0px;
-    margin: 0px;
-    height: 40px;
-    width: 40px;
-    color: rgba(255, 255, 255, 0.5);
-  }
+.look_left {
+  transition: opacity .5s;
+  opacity: 1;
+}
 
-  #emergency:hover {
-    background-color: rgba(255, 0, 0, 1);
-    color: rgba(255, 255, 255, 1);
-    scale: 1.5;
-  }
-  
-  #new_patient {
-    background-color: rgba(0, 153, 255, 0.5);
-    border-radius: 5px;
-    font-weight: bold;
-    padding: 0px;
-    margin: 0px;
-    height: 40px;
-    width: 200px;
-    color: rgba(255, 255, 255, 0.5);
-  }
-  #new_patient:hover {
-    background-color: rgba(0, 153, 255, 1);
-    color: rgba(255, 255, 255, 1);
-  }
+/* Patient Register */
+.main_right {
+  display: none;
+  overflow: hidden;
+  transition: opacity .5s;
+  flex-direction: column;
+  justify-content: start;
+  align-items: end;
+  position: absolute;
+  opacity: 0;
+  height: 95%;
+  width: 34%;
+  right: 5px;
+}
+
+.look_right {
+  transition: opacity .5s;
+  opacity: 1;
 }

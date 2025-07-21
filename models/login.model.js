@@ -6,12 +6,12 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     user_name: {
-      type: DataTypes.STRING(12),
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
     user_pass: {
-      type: DataTypes.STRING(12),
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },

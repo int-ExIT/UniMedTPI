@@ -1,8 +1,8 @@
 extends layout
 
-block left_main
+block main_center
   .login 
-    form()
+    form(action="http://localhost:8000/" name="GET")
       //- Nombre de Usuario
       .input
         label(for="user") Nombre de Usuario
@@ -12,9 +12,10 @@ block left_main
       .input
         label(for="pass") Contraseña
         input(type="password" id="pass" name="pass" value="")
-        span Mostrar Contraseña  
-          input(type="checkbox" name="" value="" id="look")
         span(id="passHelp").ayuda
+        .input_check
+          label(for="look") Mostrar Contraseña 
+          input(type="checkbox" name="look" value="" id="look")
       //- Boton Enviar
       .buttons
         button Enviar

@@ -1,13 +1,11 @@
 import queryFetch from "./fetch.js";
 
-const BASE_URL = `https://unimedtpi-production.up.railway.app/`;
+const BASE_URL = `http://localhost:8000/`;
 
 const $ = selector => document.querySelector(selector);
 const $$ = selector => document.querySelectorAll(selector);
 const formatDate = date => {
-  date = (date.length > 11)
-    ? date.substring(0, 10)
-    : date;
+  date = (date.length > 11) ? date.substring(0, 10) : date;
 
   return date.split(`-`).reverse().join(`-`);
 }
@@ -87,7 +85,6 @@ $button_emergency.addEventListener("click", () => {
     setTimeout(() => actViewPatient(true), 1500);
   } else actViewPatient(true);
 
-
   const $form = $div_patient.querySelector(`form`);
   $form.querySelector(`button`).innerHTML = `Registrar`;
   $form.querySelectorAll(`input`).forEach($input => {
@@ -136,7 +133,7 @@ $button_emergency.addEventListener("click", () => {
 
     try {
       await queryFetch(
-        `${BASE_URL}new`,
+        `${BASE_URL}admission/new`,
         `POST`,
         admission
       );
@@ -179,7 +176,7 @@ $pending_visits.addEventListener("click", async function () {
 
   if (this.checked) {
     try {
-      const data = await queryFetch(`${BASE_URL}get-all-users`);
+      const data = await queryFetch(`${BASE_URL}admission/get-all-users`);
 
       PATIENTS.length = 0;
 
@@ -223,14 +220,12 @@ $pending_visits.addEventListener("click", async function () {
 
 $program_admission.addEventListener("click", function () {
   const $title = $div_admission.querySelector(`h2`);
-
   const $submit = $div_admission.querySelector(`button`);
-
   const $div_user = $(`#user_dni`).closest(`div`);
-
   const $room_number = $(`#room_number`);
   const $div_room = $room_number.closest(`div`);
   const $option = document.createElement(`option`);
+  
   $option.innerHTML = 102;
   $option.value = 102;
   $room_number.appendChild($option);
@@ -381,13 +376,13 @@ $update_admission.addEventListener("click", function () {
       value.dni === +patientDNI
     )[0].id;
 
-    $form.action = `${BASE_URL}${admissionID}`;
+    $form.action = `${BASE_URL}admission/${admissionID}`;
     $form.name = `PUT`;
 
     $form.querySelector(`button`).innerHTML = `Actualizar`;
   } else {
     $div_admission.querySelector(`h2`).innerHTML = `Derivar Paciente`;
-    $form.action = `${BASE_URL}new`;
+    $form.action = `${BASE_URL}admission/new`;
     $form.name = `POST`;
 
     $form.querySelector(`button`).innerHTML = `Derivar`;
@@ -429,7 +424,7 @@ async function recoverPatients(dni) {
 
     const URL = ($no_admissions.checked)
       ? `${BASE_URL}patient/get-all/${dni}`
-      : `${BASE_URL}get-all/${dni}/${$discharged_patients.value}`;
+      : `${BASE_URL}admission/get-all/${dni}/${$discharged_patients.value}`;
 
     const patientData = await queryFetch(URL);
 
@@ -540,7 +535,7 @@ function registerAdmission(evt) {
     const $ingreso = $(`#ingreso`);
     const patientDNI = $td[3].innerHTML;
 
-    $form.action = `${BASE_URL}new`;
+    $form.action = `${BASE_URL}admission/new`;
     $form.name = `POST`;
     $button.innerHTML = ($discharged_patients.checked || $no_admissions.checked)
       ? `Registrar`
@@ -557,7 +552,7 @@ function registerAdmission(evt) {
 
       const admissionID = selectedPatient.id;
 
-      $form.action = `${BASE_URL}${admissionID}`;
+      $form.action = `${BASE_URL}admission/${admissionID}`;
 
       $ingreso.value = selectedPatient.ingreso;
     }
@@ -626,7 +621,7 @@ async function deletePatient(evt) {
       ? `Registrar`
       : `Derivar`;
 
-    $admission_form.action = `${BASE_URL}new`;
+    $admission_form.action = `${BASE_URL}admission/new`;
     $admission_form.name = `POST`;
     $patient_form.action = `${BASE_URL}patient/new`;
     $patient_form.name = `POST`;
@@ -828,7 +823,7 @@ async function updateRoom(action, patientDNI) {
     if (action === `vacate`) {
       // Actualizo la informacion de la 'vieja' recepcion
       await queryFetch(
-        `${BASE_URL}${admissionID}`,
+        `${BASE_URL}admission/${admissionID}`,
         `PUT`,
         { egreso: new Date() }
       );

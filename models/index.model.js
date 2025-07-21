@@ -1,7 +1,7 @@
 const sequelize = require("../config/bdd");
 const { DataTypes } = require("sequelize");
 
-// ---------------------------------------------- IMPORT MODELS ---
+// -------------------------------------------------------- IMPORT MODELS ---
 const Bed = require("./bed.model")(sequelize, DataTypes);
 const User = require("./user.model")(sequelize, DataTypes);
 const Study = require("./study.model")(sequelize, DataTypes);
@@ -11,7 +11,7 @@ const Admission = require("./admission.model")(sequelize, DataTypes);
 const Specialty = require("./specialty.model")(sequelize, DataTypes);
 const Medical_History = require("./medicalHistory.model")(sequelize, DataTypes);
 
-// ----------------------------------------------- CARGA MODELS ---
+// --------------------------------------------------------- CARGA MODELS ---
 const models = {
   Bed: Bed,
   User: User,
@@ -23,12 +23,12 @@ const models = {
   Medical_History: Medical_History,
 };
 
-// ------------------------------------------- ASSOCIATE MODELS ---
+// ----------------------------------------------------- ASSOCIATE MODELS ---
 Object.values(models).forEach(model => {
   if (model.associate) model.associate(models);
 });
 
-// ----------------------------------------------- CARGA DE BDD ---
+// --------------------------------------------------------- CARGA DE BDD ---
 async function loadTables(force) {
   try {
     await sequelize.sync({ force });
@@ -42,6 +42,7 @@ module.exports = {
   Admission,
   Patient,
   Study,
+  Login,
   User,
   Bed,
 };

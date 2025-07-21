@@ -3,16 +3,15 @@ const router = require("express").Router();
 
 // ------------------------------------------------------- RENDER Patient ---
 router.get("/", (req, res) => {
-  res.status(200).render("admission", {
+  res.status(200).render("nurse", {
     title: "UniMed-Reception",
     scripts: [
-      "../public/scripts/admission.js",
+      "../public/scripts/nurse.js",
       "../public/scripts/dataCollector.js",
     ],
     styles: [
       "../public/styles/table.css",
       "../public/styles/search.css",
-      "../public/styles/admission.css",
     ],
   });
 });

@@ -5,9 +5,16 @@
     "database": "uni_med",
     "host": "localhost",
     "dialect": "mysql",
-    "port": 8000
+    "port": 3306
   },
-  "test": {},
+  "test": {
+    "username": "root",
+    "password": "",
+    "database": "uni_med",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": 3306
+  },
   "production": {
     "username": "root",
     "password": "fSfsUsebMNytFsOgMMGKyGVnisPECwXz",

@@ -15,12 +15,11 @@ export default async function queryFetch(url, method, body) {
       throw new Error(data.message);
     }
 
-    const result = await response.json();
-    
-    console.log(`Result fetch: ${result.message}`);
+    const result = (response.status !== 201) ? await response.json() : ``;
+
+    console.log(`Result fetch: ${result?.message}`);
     // console.log(`Element: ${JSON.stringify(result.body)}`);
-    
+
     return result.body;
-  }
-  catch (err) { console.error(`Fetch ${err}`); }
+  } catch (err) { console.error(err.message); }
 } 

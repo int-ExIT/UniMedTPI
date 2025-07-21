@@ -7,8 +7,6 @@ const {
 } = require("../models/index.model");
 const { Op } = require("sequelize");
 
-// AGREGAR LA OPCION DE BUSCAR YA SEA POR EL DNI DEL PACIENTE O EL DEL USUARIO...
-
 async function insert(req, res) {
   try {
     const element = await MODEL.create(req.body);

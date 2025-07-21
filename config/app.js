@@ -1,3 +1,4 @@
+const cookieParser = require("cookie-parser");
 const express = require("express");
 const config = require("../config");
 const morgan = require("morgan");
@@ -15,6 +16,7 @@ app.use("/public", express.static(path.join(__dirname, "../public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cookieParser());
 app.use(cors({
   origin: 'https://unimedtpi-production.up.railway.app'
 }));

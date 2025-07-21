@@ -6,12 +6,8 @@
   border-radius: 20px;
   align-items: center;
   position: relative;
-  /* if (displayCenter !== none) */
   height: 95%;
   width: 95%;
-  /* if (displayCenter === none) */
-  /* width: auto; */
-  /* height: auto; */
   gap: 30px;
 }
 
@@ -41,58 +37,6 @@
 .main_center::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 20px;
-}
-
-.right_shift {
-  transition: width .5s;
-  overflow: hidden;
-  width: 82%;
-}
-
-.left_shift {
-  transition: width .5s;
-  overflow: hidden;
-  width: 66%;
-}
-
-/* Admission Register */
-.left_main {
-  display: none;
-  overflow: hidden;
-  transition: opacity .5s;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  position: absolute;
-  opacity: 0;
-  height: 95%;
-  width: 18%;
-  left: 5px;
-}
-
-.look_left {
-  transition: opacity .5s;
-  opacity: 1;
-}
-
-/* Patient Register */
-.main_right {
-  display: none;
-  overflow: hidden;
-  transition: opacity .5s;
-  flex-direction: column;
-  justify-content: start;
-  align-items: end;
-  position: absolute;
-  opacity: 0;
-  height: 95%;
-  width: 34%;
-  right: 5px;
-}
-
-.look_right {
-  transition: opacity .5s;
-  opacity: 1;
 }
 
 td button {
