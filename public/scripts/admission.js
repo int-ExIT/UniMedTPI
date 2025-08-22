@@ -425,7 +425,6 @@ async function recoverPatients(dni) {
     const URL = ($no_admissions.checked)
       ? `${BASE_URL}patient/get-all/${dni}`
       : `${BASE_URL}admission/get-all/${dni}/${$discharged_patients.value}`;
-
     const patientData = await queryFetch(URL);
 
     for (const pd of patientData) {

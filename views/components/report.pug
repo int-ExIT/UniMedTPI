@@ -1,0 +1,33 @@
+h2(style="text-align: center; width: 480px;") Redactar Informe
+form(action="http://localhost:8000/study/new" name="POST")
+  .register(style="width: 480px;")
+    //- DNI-User
+    .input(style="display: none;") 
+      label(for="user_dni") DNI Usuario 
+      input(type="text" id="user_dni" name="user_dni" autocomplete="off" spellcheck="false" value="" placeholder="Ingrese DNI")
+    //- DNI
+    .input(style="display: none;") 
+      label(for="patient_dni") DNI 
+      input(type="text" id="patient_dni" name="patient_dni" autocomplete="off" spellcheck="false" value="" placeholder="Ingrese DNI")
+    //- Tipe
+    .input(style="display: none;") 
+      label(for="tipo_estudio") Tipo de Estudio 
+      select(id="tipo_estudio" name="tipo_estudio")
+        option(value="observacionales") Observacionales 
+    //- Triage
+    .input 
+      label(for="triage") Categoria 
+      select(id="triage" name="triage" style="width: 420px;")
+        option(value="none") Selecciar Triage 
+        option(value="no urgente") No Urgente
+        option(value="semiurgencia") Semiurgencia
+        option(value="urgencia") Urgencia    
+        option(value="emergencia") Emergencia    
+        option(value="reanimacion") Reanimacion 
+    //- Detail
+    .input 
+      label(for="detalle") Detalle 
+      textarea(id="detalle" name="detalle" style="width: 420px; height: 300px;")
+    //- Boton Enviar
+    .buttons
+      button.send Enviar 

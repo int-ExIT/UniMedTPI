@@ -4,9 +4,13 @@ block header
   include ./components/search.pug 
 block left_main
   #l_main.left_main 
+    //- include ./components/patient.register.pug 
 block main_center
   #main.main_center
     include ./components/table.pug
 block main_right
-  #main_r.main_right
+  #report.main_right
+    include ./components/report.pug
+  #register.main_right
+    include ./components/patient.register.pug 
 block footer 

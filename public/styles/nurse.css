@@ -1,0 +1,60 @@
+form {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 15px;
+  margin: 0px;
+  height: 100%;
+  gap: 30px;
+}
+
+/* TABLE */
+.left_shift {
+  transition: width .5s;
+  overflow: hidden;
+  width: 67%;
+}
+
+/* MEDICAL REPORTS */
+.main_right {
+  display: none;
+  overflow: hidden;
+  transition: opacity .5s;
+  flex-direction: column;
+  justify-content: start;
+  align-items: end;
+  position: absolute;
+  opacity: 0;
+  height: 95%;
+  width: 30%;
+  right: 15px;
+  align-items: center;
+}
+
+.look_right {
+  transition: opacity .5s;
+  opacity: 1;
+}
+
+/* PATIENT REGISTER */
+.left_main {
+  display: flex;
+  overflow: hidden;
+  transition: opacity .5s;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  position: absolute;
+  opacity: 1;
+  height: 95%;
+  width: 34%;
+  left: 5px;
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: auto;
+  font-size: 14pt;
+}

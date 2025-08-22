@@ -14,7 +14,7 @@ app.use('/', login);
 app.use('/bed', checkToken(['Recepcionista', 'Enfermero', 'Medico']), bed);
 app.use('/study', checkToken(['Recepcionista', 'Enfermero', 'Medico']), study);
 app.use('/patient', checkToken(['Recepcionista', 'Enfermero', 'Medico']), patient);
-app.use('/admission', checkToken(['Recepcionista']), admission);
+app.use('/admission', checkToken(['Recepcionista', 'Enfermero']), admission);
 app.use('/nurse', checkToken(['Enfermero']), nurse);
 
 //---------------------------------------------------------------- ERRORS ---

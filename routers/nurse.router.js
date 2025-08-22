@@ -12,6 +12,7 @@ router.get("/", (req, res) => {
     styles: [
       "../public/styles/table.css",
       "../public/styles/search.css",
+      "../public/styles/nurse.css",
     ],
   });
 });
